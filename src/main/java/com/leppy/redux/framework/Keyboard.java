@@ -11,22 +11,7 @@ public class Keyboard {
 
     public Keyboard() {
         for (int i = 0; i < MAXSET - MINSET; i++) keys[i] = new Key(i + MINSET);
-        System.out.println(keys[0].getKeyCode());
     }
-
-    /*
-    public void keyChangeHandler(long windowHandle, int keyCode, int scanCode, int action, int mods) {
-        this.wasJustPressed[keyCode] = false;
-        if (keyCode < this.isPressed.length) {
-            if (action == GLFW_PRESS) {
-                if (!this.pressedCache[keyCode]) this.wasJustPressed[keyCode] = true;
-                this.isPressed[keyCode] = true;
-            }
-            else if (action == GLFW_RELEASE) this.isPressed[keyCode] = false;
-        }
-        this.pressedCache[keyCode] = this.isPressed[keyCode];
-    }
-    */
 
     public void update(long windowHandle) {
         updateKeys(windowHandle);

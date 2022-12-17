@@ -1,5 +1,6 @@
 package com.leppy.redux.framework;
 
+import com.leppy.redux.engine.Scene;
 import com.leppy.redux.util.RGBFWrapper;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -31,6 +32,7 @@ public class Window {
         }
     }
 
+    public static Window instance;
     private int width, height;
     private String name;
     public RGBFWrapper color;
@@ -65,8 +67,12 @@ public class Window {
      */
     public void run() {
         System.out.println("Redux framework with LWJGL version " + Version.getVersion() + " is now running");
-
-        init();
+        this.init();
+    }
+    
+    public static Window get() {
+        if (instance == null) instance = new Window();
+        return instance;
     }
 
     public void init() {
@@ -116,12 +122,29 @@ public class Window {
         glfwShowWindow(this.handle);
     }
 
-    public void setColor(RGBFWrapper color) {
-        this.color = color;
+    @Deprecated
+    public static void render() {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+
+        get().clearColor(get().color); // Paint background
+        glClear(GL_COLOR_BUFFER_BIT);
+        glfwSwapBuffers(get().handle); // swap the color buffers
     }
 
-    public long getHandle() {
-        return this.handle;
+    public static void setColor(RGBFWrapper color) {
+        get().color = color;
+    }
+
+    public static void setColor(float R, float G, float B, float F) {
+        setColor(new RGBFWrapper(R, G, B, F));
+    }
+
+    public static RGBFWrapper getColor() {
+        return get().color;
+    }
+
+    public static long getHandle() {
+        return get().handle;
     }
 
     public void clearColor(RGBFWrapper color) {
