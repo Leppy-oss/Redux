@@ -1,10 +1,10 @@
 package com.leppy.redux.util;
 
 public class RGBFWrapper {
-    public final float R;
-    public final float G;
-    public final float B;
-    public final float F;
+    public float R;
+    public float G;
+    public float B;
+    public float F;
 
     public RGBFWrapper(float r, float g, float b, float f) {
         this.R = r;

@@ -14,10 +14,11 @@ dependencies {
 }
 
 project.ext.lwjglVersion = "3.3.1"
-// project.ext.lwjgl3-awtVersion = "0.1.8"
-// project.ext.steamworks4j-serverVersion = "1.9.0"
+project.ext.lwjgl3awtVersion = "0.1.8"
+project.ext.steamworks4jserverVersion = "1.9.0"
 project.ext.steamworks4jVersion = "1.9.0"
 project.ext.lwjglNatives = "natives-windows"
+project.ext.jomlVersion = "1.10.5"
 
 dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
@@ -43,9 +44,10 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-par::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
-    // implementation "org.lwjglx:lwjgl3-awt:${lwjgl3-awtVersion}"
-    // implementation "com.code-disaster.steamworks4j:steamworks4j-server:${steamworks4j-serverVersion}"
-    implementation "com.code-disaster.steamworks4j:steamworks4j:${steamworks4jVersion}"
+    implementation "org.lwjglx:lwjgl3-awt:$lwjgl3awtVersion"
+    implementation "com.code-disaster.steamworks4j:steamworks4j-server:$steamworks4jserverVersion"
+    implementation "com.code-disaster.steamworks4j:steamworks4j:$steamworks4jVersion"
+    implementation "org.joml:joml:$jomlVersion"
 }
 
 test {
