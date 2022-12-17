@@ -84,4 +84,8 @@ public class ReduxEngine {
         get().scene = newScene;
         get().scene.init();
     }
+
+    public static void quit() {
+        Window.quit();
+    }
 }

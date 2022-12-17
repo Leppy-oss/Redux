@@ -147,6 +147,18 @@ public class Window {
         return get().handle;
     }
 
+    public static int getWidth() {
+        return get().width;
+    }
+
+    public static int getHeight() {
+        return get().height;
+    }
+
+    public static void quit() {
+        glfwSetWindowShouldClose(get().handle, true);
+    }
+
     public void clearColor(RGBFWrapper color) {
         glClearColor(color.R, color.G, color.B, color.F);
     }

@@ -6,8 +6,8 @@ public class Keyboard {
     public static final int MINSET = 32;
     public static final int MAXSET = 349;
     public Key keys[] = new Key[MAXSET - MINSET];
-    public final int HORIZONTAL_AXIS = 0;
-    public final int VERTICAL_AXIS = 1;
+    public static final int HORIZONTAL_AXIS = 0;
+    public static final int VERTICAL_AXIS = 1;
 
     public Keyboard() {
         for (int i = 0; i < MAXSET - MINSET; i++) keys[i] = new Key(i + MINSET);
@@ -41,19 +41,19 @@ public class Keyboard {
     public int getAxis(int axis, boolean sumOfBoth) {
         switch (axis) {
             case HORIZONTAL_AXIS:
-                int left = (isPressed(GLFW_KEY_A) || isPressed(GLFW_KEY_LEFT)) ? -1 : 0;
-                int right = (isPressed(GLFW_KEY_D) || isPressed(GLFW_KEY_RIGHT)) ? 1 : 0;
+                int left = (isPressed(GLFW_KEY_LEFT)) ? -1 : 0;
+                int right = (isPressed(GLFW_KEY_RIGHT)) ? 1 : 0;
                 return sumOfBoth ? left + right : (left < 0 ? left : right); // TODO: Clean up ternaries
 
             default:
-                int down = (isPressed(GLFW_KEY_S) || isPressed(GLFW_KEY_DOWN)) ? -1 : 0;
-                int up = (isPressed(GLFW_KEY_W) || isPressed(GLFW_KEY_UP) || isPressed(GLFW_KEY_SPACE)) ? 1 : 0;
+                int down = (isPressed(GLFW_KEY_DOWN)) ? -1 : 0;
+                int up = (isPressed(GLFW_KEY_UP)) ? 1 : 0;
                 return sumOfBoth ? down + up : (up > 0 ? up : down); // TODO: Clean up ternaries
         }
     }
 
     public int getAxis(int axis) {
-        return getAxis(axis, false);
+        return getAxis(axis, true);
     }
 
     public boolean left() {

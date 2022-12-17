@@ -1,10 +1,13 @@
 package com.leppy.redux.engine;
 
 import com.leppy.redux.framework.*;
+import com.leppy.redux.framework.render.Shader;
 import com.leppy.redux.util.*;
+import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
-import java.nio.*;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -14,38 +17,16 @@ public class GameScene extends Scene {
     private STATE state = STATE.IDLE;
     private static double FADE_CONST = 5.0;
     private volatile double dt = -1;
-    private String fVertexShader = "#version 330 core\n" +
-            "layout (location=0) in vec3 aPos;\n" +
-            "layout (location=1) in vec4 aColor;\n" +
-            "\n" +
-            "out vec4 fColor;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    fColor = aColor;\n" +
-            "    gl_Position = vec4(aPos, 1.0);\n" +
-            "}";
-
-    private String fFragmentShader = "#version 330 core\n" +
-            "\n" +
-            "in vec4 fColor;\n" +
-            "\n" +
-            "out vec4 color;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    color = fColor;\n" +
-            "}";
 
     private int vertexID, fragmentID, shaderProgram, vaoID, vboID, eboID;
-
+    private Shader defaultShader;
 
     private float[] vertexArray = {
             // position               // color
-            0.5f, -0.5f, 0.0f,       1.0f, 0.0f, 0.0f, 1.0f, // Bottom right 0
-            -0.5f,  0.5f, 0.0f,       0.0f, 1.0f, 0.0f, 1.0f, // Top left     1
-            0.5f,  0.5f, 0.0f ,      1.0f, 0.0f, 1.0f, 1.0f, // Top right    2
-            -0.5f, -0.5f, 0.0f,       1.0f, 1.0f, 0.0f, 1.0f, // Bottom left  3
+            100.5f, 0.5f, 0.0f,       1.0f, 0.0f, 0.0f, 1.0f, // Bottom right 0
+            0.5f,  100.5f, 0.0f,       0.0f, 1.0f, 0.0f, 1.0f, // Top left     1
+            100.5f, 100.5f, 0.0f ,      1.0f, 0.0f, 1.0f, 1.0f, // Top right    2
+            0.5f, 0.5f, 0.0f,       1.0f, 1.0f, 0.0f, 1.0f, // Bottom left  3
     };
 
     // IMPORTANT: Must be in counter-clockwise order
@@ -60,59 +41,13 @@ public class GameScene extends Scene {
 
     @Override
     public void init() {
+        this.camera = new Camera(new Vector2f());
         this.initializeShaders();
     }
 
     public void initializeShaders() {
-        // ============================================================
-        // Compile and link shaders
-        // ============================================================
-
-        // First load and compile the vertex shader
-        vertexID = glCreateShader(GL_VERTEX_SHADER);
-        // Pass the shader source to the GPU
-        glShaderSource(vertexID, fVertexShader);
-        glCompileShader(vertexID);
-
-        // Check for errors in compilation
-        int success = glGetShaderi(vertexID, GL_COMPILE_STATUS);
-        if (success == GL_FALSE) {
-            int len = glGetShaderi(vertexID, GL_INFO_LOG_LENGTH);
-            System.out.println("ERROR: 'defaultShader.glsl'\n\tVertex shader compilation failed.");
-            System.out.println(glGetShaderInfoLog(vertexID, len));
-            assert false : "";
-        }
-
-        // First load and compile the vertex shader
-        fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
-        // Pass the shader source to the GPU
-        glShaderSource(fragmentID, fFragmentShader);
-        glCompileShader(fragmentID);
-
-        // Check for errors in compilation
-        success = glGetShaderi(fragmentID, GL_COMPILE_STATUS);
-        if (success == GL_FALSE) {
-            int len = glGetShaderi(fragmentID, GL_INFO_LOG_LENGTH);
-            System.out.println("ERROR: 'defaultShader.glsl'\n\tFragment shader compilation failed.");
-            System.out.println(glGetShaderInfoLog(fragmentID, len));
-            assert false : "";
-        }
-
-        // Link shaders and check for errors
-        shaderProgram = glCreateProgram();
-        glAttachShader(shaderProgram, vertexID);
-        glAttachShader(shaderProgram, fragmentID);
-        glLinkProgram(shaderProgram);
-
-        // Check for linking errors
-        success = glGetProgrami(shaderProgram, GL_LINK_STATUS);
-        if (success == GL_FALSE) {
-            int len = glGetProgrami(shaderProgram, GL_INFO_LOG_LENGTH);
-            System.out.println("ERROR: 'defaultShader.glsl'\n\tLinking of shaders failed.");
-            System.out.println(glGetProgramInfoLog(shaderProgram, len));
-            assert false : "";
-        }
-
+        defaultShader = new Shader("assets/shaders/basic.glsl");
+        defaultShader.compile();
         // ============================================================
         // Generate VAO, VBO, and EBO buffer objects, and send to GPU
         // ============================================================
@@ -139,7 +74,7 @@ public class GameScene extends Scene {
         // Add the vertex attribute pointers
         int positionsSize = 3;
         int colorSize = 4;
-        int floatSizeBytes = Float.BYTES;
+        int floatSizeBytes = 4;
         int vertexSizeBytes = (positionsSize + colorSize) * floatSizeBytes;
         glVertexAttribPointer(0, positionsSize, GL_FLOAT, false, vertexSizeBytes, 0);
         glEnableVertexAttribArray(0);
@@ -157,7 +92,9 @@ public class GameScene extends Scene {
     }
 
     public void handleControls() {
-        if(state != STATE.TRANSITIONING && ControlSystem.keyboard().wasJustPressed(GLFW_KEY_SPACE)) state = STATE.TRANSITIONING;
+        if (state != STATE.TRANSITIONING && ControlSystem.keyboard().wasJustPressed(GLFW_KEY_SPACE)) state = STATE.TRANSITIONING;
+        if (ControlSystem.keyboard().wasJustPressed(GLFW_KEY_ESCAPE)) ReduxEngine.quit();
+        camera.offsetPosition((float) (dt * 100.0f * ControlSystem.keyboard().getAxis(Keyboard.HORIZONTAL_AXIS)), (float) (dt * 100.0f * ControlSystem.keyboard().getAxis(Keyboard.VERTICAL_AXIS)));
     }
 
     public void handleState() {
@@ -178,8 +115,9 @@ public class GameScene extends Scene {
     }
 
     public void draw() {
-        // Bind shader program
-        glUseProgram(shaderProgram);
+        defaultShader.use();
+        defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
+        defaultShader.uploadMat4f("uView", camera.getCameraMatrix());
         // Bind the VAO that we're using
         glBindVertexArray(vaoID);
 
@@ -194,8 +132,7 @@ public class GameScene extends Scene {
         glDisableVertexAttribArray(1);
 
         glBindVertexArray(0);
-
-        glUseProgram(0);
+        defaultShader.detach();
     }
 
     public enum STATE {
