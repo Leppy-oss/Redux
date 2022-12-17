@@ -3,10 +3,10 @@ package com.leppy.redux.framework;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Button {
-    private boolean isPressed;
-    private boolean previouslyPressed;
-    private boolean wasJustPressed;
-    private int code;
+    protected boolean isPressed;
+    protected boolean previouslyPressed;
+    protected boolean wasJustPressed;
+    protected int code;
 
     public Button(int code) {
         isPressed = false;
@@ -19,7 +19,7 @@ public class Button {
         wasJustPressed = false;
         if (status == GLFW_PRESS) {
             if(!previouslyPressed) wasJustPressed = true;
-            wasJustPressed = true;
+            isPressed = true;
         }
         else if (status == GLFW_RELEASE) isPressed = false;
         previouslyPressed = isPressed;

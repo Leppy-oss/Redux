@@ -1,9 +1,6 @@
 package com.leppy.redux.engine;
 
-import com.leppy.redux.framework.Keyboard;
-import com.leppy.redux.framework.Mouse;
-import com.leppy.redux.framework.Redux;
-import com.leppy.redux.framework.Window;
+import com.leppy.redux.framework.*;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -13,14 +10,11 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class ReduxEngine {
     private Window window;
-    private Mouse mouse;
-    private Keyboard keyboard;
     private boolean d_u = true; // TODO: only here for experimentation
 
     public ReduxEngine() {
-        window = new Window("Redux");
-        mouse = Mouse.get();
-        keyboard = Keyboard.get();
+        window = new Window("Redux"); // should init and set all the props in the constructor
+        ControlSystem.setInstance(window.getHandle());
     }
 
     public void start() {
@@ -36,6 +30,9 @@ public class ReduxEngine {
         }
     }
 
+    /**
+     * Basically an update function
+     */
     public void render() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
@@ -43,23 +40,20 @@ public class ReduxEngine {
 
         glfwSwapBuffers(window.getHandle()); // swap the color buffers
 
-        Keyboard.update(window.getHandle());
+        ControlSystem.update();
 
-        glfwPollEvents(); // Update callbacks
-
-        if (Keyboard.wasJustPressed(GLFW_KEY_SPACE)) {
-            System.out.println("multiple?");
+        if (ControlSystem.keyboard().wasJustPressed(GLFW_KEY_SPACE)) {
             if (d_u) {
                 if (window.color.R < 1.0f) {
-                    window.color.R += 0.005f;
-                    window.color.G += 0.005f;
+                    window.color.R += 0.05f;
+                    window.color.G += 0.05f;
                 }
                 else d_u = false;
             }
             else {
                 if (window.color.R > 0.0f) {
-                    window.color.R -= 0.005f;
-                    window.color.G -= 0.005f;
+                    window.color.R -= 0.05f;
+                    window.color.G -= 0.05f;
                 }
                 else d_u = true;
             }

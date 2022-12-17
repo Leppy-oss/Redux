@@ -20,5 +20,6 @@ public class Main {
         new Main();
 
         engine.start();
+        engine.terminate();
     }
 }

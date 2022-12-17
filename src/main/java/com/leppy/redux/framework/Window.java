@@ -47,6 +47,8 @@ public class Window {
         this.height = properties.height;
         this.name = properties.name;
         this.color = properties.color;
+
+        this.init();
     }
 
     public Window() {
@@ -85,11 +87,6 @@ public class Window {
         this.handle = glfwCreateWindow(this.width, this.height, this.name, NULL, NULL);
         if (this.handle == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
-
-        glfwSetCursorPosCallback(this.handle, Mouse::mouseMoveHandler);
-        glfwSetScrollCallback(this.handle, Mouse::scrollHandler);
-        glfwSetMouseButtonCallback(this.handle, Mouse::mouseButtonHandler);
-        // glfwSetKeyCallback(this.handle, Keyboard::keyChangeHandler);
 
         // Get the thread stack and push a new frame
         try (MemoryStack stack = stackPush()) {

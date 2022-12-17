@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="complete first hash setup of redux window framework">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Key.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Keyboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="benchmark commit, migrating from static callbacks to async instance updates">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ControlSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Mouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/RGBFWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/RGBFWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671230213994</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="benchmark commit, migrating from static callbacks to async instance updates">
+      <created>1671250011787</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671250011787</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +152,7 @@
     <MESSAGE value="gradle, xml setup" />
     <MESSAGE value="complete lwjgl gradle, xml setup; change jdk runtime to SE 17 (will be changed)" />
     <MESSAGE value="complete first hash setup of redux window framework" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete first hash setup of redux window framework" />
+    <MESSAGE value="benchmark commit, migrating from static callbacks to async instance updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="benchmark commit, migrating from static callbacks to async instance updates" />
   </component>
 </project>
