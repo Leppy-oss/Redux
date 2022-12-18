@@ -1,5 +1,6 @@
 package com.leppy.redux.util;
 
+@Deprecated
 public final class Time {
     public static long startTime = System.nanoTime();
 

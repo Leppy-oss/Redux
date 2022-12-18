@@ -2,7 +2,6 @@ package com.leppy.redux.engine;
 
 import com.leppy.redux.framework.ControlSystem;
 import com.leppy.redux.framework.Window;
-import com.leppy.redux.util.Time;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -15,13 +14,12 @@ public class ReduxEngine {
      */
     public static ReduxEngine instance;
     private Scene scene;
-    private boolean d_u = true; // TODO: only here for experimentation
     private double dt; // Delta time
     private double prevTime;
 
     public ReduxEngine() {
         dt = -1;
-        prevTime = Time.time();
+        prevTime = 0;
         ControlSystem.setInstance(Window.getHandle());
     }
 
@@ -32,20 +30,21 @@ public class ReduxEngine {
     }
 
     public static void run() {
-        get().start();
+        start();
+        terminate();
     }
 
     /**
      * make sure to init() first
      */
     public static void start() {
-        Time.reset();
-        get().prevTime = Time.time();
+        get().prevTime = glfwGetTime();
         while (!glfwWindowShouldClose(Window.getHandle())) {
-            get().dt = Time.time() - get().prevTime;
-            get().prevTime = Time.time();
+            double endTime = glfwGetTime();
+            get().dt = endTime - get().prevTime;
+            get().prevTime = endTime;
             ControlSystem.update();
-            get().render();
+            render();
         }
     }
 
