@@ -1,37 +1,58 @@
 package com.leppy.redux.engine;
 
-import com.leppy.redux.framework.Camera;
-import com.leppy.redux.framework.ControlSystem;
-import com.leppy.redux.framework.Keyboard;
-import com.leppy.redux.framework.Window;
-import com.leppy.redux.framework.ecs.GameObject;
-import com.leppy.redux.framework.ecs.Transform;
-import com.leppy.redux.framework.ecs.components.SpriteRenderer;
-import com.leppy.redux.util.AssetPool;
-import com.leppy.redux.util.RGBFWrapper;
-import org.joml.Vector2f;
-import org.joml.Vector4f;
+import com.leppy.redux.framework.*;
+import com.leppy.redux.framework.ecs.*;
+import com.leppy.redux.framework.ecs.components.*;
+import com.leppy.redux.util.*;
+import org.joml.*;
 
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_SPACE;
+import static org.lwjgl.glfw.GLFW.*;
 
 public class GameScene extends Scene {
     private STATE state = STATE.IDLE;
     private static double FADE_CONST = 5.0;
     private volatile double dt = -1;
+    private GameObject testPlayer;
+    private int spriteIndex = 0;
+    private float spriteFlipTime = 0.2f;
+    private float spriteFlipTimeLeft = 0.0f;
+    private Spritesheet sprites;
+
+    Vector2f[] texCoords1 = {
+            new Vector2f(0.5f, 0.5f),
+            new Vector2f(0.5f, 0),
+            new Vector2f(0, 0),
+            new Vector2f(0, 0.5f)
+    };
+    Vector2f[] texCoords2 = {
+            new Vector2f(1.0f, 1.0f),
+            new Vector2f(1.0f, 0.5f),
+            new Vector2f(0.5f, 0.5f),
+            new Vector2f(0.5f, 1.0f)
+    };
 
     @Override
     public void init() {
+        this.loadResources();
+
         this.camera = new Camera(new Vector2f(0, 0));
 
-        GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
-        obj1.addComponent(new SpriteRenderer(AssetPool.getTexture("assets/images/testImage.png")));
-        this.addGameObjectToScene(obj1);
-        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)));
-        obj2.addComponent(new SpriteRenderer(AssetPool.getTexture("assets/images/testing-player.png")));
-        this.addGameObjectToScene(obj2);
+        testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
+        testPlayer.addComponent(new SpriteRenderer(sprites.getSprite(0)));
+        this.addGameObjectToScene(testPlayer);
 
-        this.loadResources();
+        GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
+                new Vector2f(256, 256)), 2);
+        obj1.addComponent(new SpriteRenderer(new Sprite(
+                AssetPool.getTexture("assets/images/blendImage1.png")
+        )));
+        GameObject obj2 = new GameObject("Object 2",
+                new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 3);
+        obj2.addComponent(new SpriteRenderer(new Sprite(
+                AssetPool.getTexture("assets/images/blendImage2.png")
+        )));
+        this.addGameObjectToScene(obj1);
+        this.addGameObjectToScene(obj2);
     }
 
     @Override
@@ -67,6 +88,12 @@ public class GameScene extends Scene {
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
+
+        AssetPool.addSpritesheet("idle-spritesheet",
+                new Spritesheet(AssetPool.getTexture("assets/images/player-spritesheet-idle.png"),
+                        32, 38, 6, 0));
+
+        sprites = AssetPool.getSpritesheet("idle-spritesheet");
     }
 
     public void draw() {
@@ -75,6 +102,14 @@ public class GameScene extends Scene {
         for (GameObject go : this.gameObjects) {
             go.update((float) dt);
         }
+
+        spriteFlipTimeLeft -= dt;
+        if (spriteFlipTimeLeft <= 0) {
+            spriteFlipTimeLeft = spriteFlipTime;
+            spriteIndex++;
+            if (spriteIndex > 5) spriteIndex = 0;
+        }
+        testPlayer.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
 
         this.renderer.render();
     }

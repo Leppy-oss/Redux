@@ -125,9 +125,10 @@ public class Window {
     @Deprecated
     public static void render() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_DEPTH_BUFFER_BIT);
 
         get().clearColor(get().color); // Paint background
-        glClear(GL_COLOR_BUFFER_BIT);
         glfwSwapBuffers(get().handle); // swap the color buffers
     }
 

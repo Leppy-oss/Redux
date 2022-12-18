@@ -1,6 +1,7 @@
 package com.leppy.redux.framework.ecs.components;
 
 import com.leppy.redux.framework.ecs.*;
+import com.leppy.redux.framework.ecs.components.*;
 import com.leppy.redux.framework.render.Texture;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -8,26 +9,34 @@ import org.joml.Vector4f;
 public class SpriteRenderer extends Component {
 
     private Vector4f color;
-    private Vector2f[] texCoords;
-    private Texture texture;
+    private Sprite sprite;
+
+    private Transform lastTransform;
+    private boolean isDirty = false;
 
     public SpriteRenderer(Vector4f color) {
         this.color = color;
-        this.texture = null;
+        this.sprite = new Sprite(null);
+        this.isDirty = true;
     }
 
-    public SpriteRenderer(Texture texture) {
-        this.texture = texture;
+    public SpriteRenderer(Sprite sprite) {
+        this.sprite = sprite;
         this.color = new Vector4f(1, 1, 1, 1);
+        this.isDirty = true;
     }
 
     @Override
     public void start() {
+        this.lastTransform = gameObject.transform.copy();
     }
 
     @Override
     public void update(float dt) {
-
+        if (!this.lastTransform.equals(this.gameObject.transform)) {
+            this.gameObject.transform.copy(this.lastTransform);
+            isDirty = true;
+        }
     }
 
     public Vector4f getColor() {
@@ -35,16 +44,30 @@ public class SpriteRenderer extends Component {
     }
 
     public Texture getTexture() {
-        return this.texture;
+        return sprite.getTexture();
     }
 
     public Vector2f[] getTexCoords() {
-        Vector2f[] texCoords = {
-            new Vector2f(1, 1),
-            new Vector2f(1, 0),
-            new Vector2f(0, 0),
-            new Vector2f(0, 1)
-        };
-        return texCoords;
+        return sprite.getTexCoords();
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+        this.isDirty = true;
+    }
+
+    public void setColor(Vector4f color) {
+        if (!this.color.equals(color)) {
+            this.isDirty = true;
+            this.color.set(color);
+        }
+    }
+
+    public boolean isDirty() {
+        return this.isDirty;
+    }
+
+    public void setClean() {
+        this.isDirty = false;
     }
 }
