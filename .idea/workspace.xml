@@ -4,16 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="functional vertex buffer shading, fragment gradients, and GL shading, rendering in prog.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Shader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Constants.java" afterDir="false" />
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="shader abstraction, modifications to controls, camera implementation with handy JOML functions">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/FontRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/shaders/basic.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/basic.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Shader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671312575356</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="shader abstraction, modifications to controls, camera implementation with handy JOML functions">
+      <created>1671319583656</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671319583656</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +182,7 @@
     <MESSAGE value="benchmark commit, migrating from static callbacks to async instance updates" />
     <MESSAGE value="FULLY WORKING keyboard, mouse, engine, ALL CONTROLS W" />
     <MESSAGE value="functional vertex buffer shading, fragment gradients, and GL shading, rendering in prog." />
-    <option name="LAST_COMMIT_MESSAGE" value="functional vertex buffer shading, fragment gradients, and GL shading, rendering in prog." />
+    <MESSAGE value="shader abstraction, modifications to controls, camera implementation with handy JOML functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="shader abstraction, modifications to controls, camera implementation with handy JOML functions" />
   </component>
 </project>

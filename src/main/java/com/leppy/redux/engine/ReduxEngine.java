@@ -83,9 +83,14 @@ public class ReduxEngine {
     public static void changeScene(Scene newScene) {
         get().scene = newScene;
         get().scene.init();
+        get().scene.start();
     }
 
     public static void quit() {
         Window.quit();
+    }
+
+    public static Scene getScene() {
+        return get().scene;
     }
 }
