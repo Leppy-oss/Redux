@@ -4,22 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="working texture batch rendering">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/MultiSpriteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Sprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Spritesheet.java" afterDir="false" />
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="animations, spritesheets, alpha blending, and zIndexing added!">
+      <change afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/ComponentDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObjectDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Rigidbody.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Component.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/AssetPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/AssetPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,21 +77,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/ryan/Downloads/redux baseline",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ryan/Documents/redux-framework/libs/imgui-binding-1.86.4.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ryan\Documents\redux-framework\src\main\java" />
@@ -104,6 +106,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.leppy.redux.Main" />
       <module name="redux-framework.main" />
+      <option name="PROGRAM_PARAMETERS" value="-Djava.library.path=C:\Users\ryan\Documents\redux-framework\libs" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671326460599</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="animations, spritesheets, alpha blending, and zIndexing added!">
+      <created>1671391375196</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671391375196</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,6 +215,7 @@
     <MESSAGE value="shader abstraction, modifications to controls, camera implementation with handy JOML functions" />
     <MESSAGE value="working batch rendering, texturing, and ecs" />
     <MESSAGE value="working texture batch rendering" />
-    <option name="LAST_COMMIT_MESSAGE" value="working texture batch rendering" />
+    <MESSAGE value="animations, spritesheets, alpha blending, and zIndexing added!" />
+    <option name="LAST_COMMIT_MESSAGE" value="animations, spritesheets, alpha blending, and zIndexing added!" />
   </component>
 </project>

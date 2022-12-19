@@ -2,6 +2,9 @@ package com.leppy.redux.engine;
 
 import com.leppy.redux.framework.ControlSystem;
 import com.leppy.redux.framework.Window;
+import imgui.ImGui;
+import imgui.ImGuiIO;
+import imgui.flag.ImGuiConfigFlags;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -16,6 +19,9 @@ public class ReduxEngine {
     private Scene scene;
     private double dt; // Delta time
     private double prevTime;
+
+    protected static final String glslVersion = "#version 300 es"; // from basic.glsl, default.glsl, etc.
+    private ImGuiLayer imguilayer;
 
     public ReduxEngine() {
         dt = -1;
@@ -46,6 +52,13 @@ public class ReduxEngine {
             ControlSystem.update();
             render();
         }
+        get().scene.saveExit();
+    }
+
+    public static void initImGui() {
+        ImGui.createContext();
+        ImGuiIO io = ImGui.getIO();
+        io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
     }
 
     public static void init() {
@@ -59,6 +72,11 @@ public class ReduxEngine {
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        initImGui();
+
+        get().imguilayer = new ImGuiLayer();
+        ReduxEngine.changeScene(new GameScene());
     }
 
     /**
@@ -70,12 +88,14 @@ public class ReduxEngine {
         Window.get().clearColor(Window.get().color); // Paint background
         glClear(GL_COLOR_BUFFER_BIT);
         get().scene.update(get().dt);
+        get().imguilayer.update(get().scene);
 
         glfwSwapBuffers(Window.getHandle()); // swap the color buffers
     }
 
     public static void terminate() {
         // Free up memory with termination code
+        get().imguilayer.terminate();
         glfwFreeCallbacks(Window.getHandle());
         glfwDestroyWindow(Window.getHandle());
         glfwTerminate();
@@ -84,6 +104,7 @@ public class ReduxEngine {
 
     public static void changeScene(Scene newScene) {
         get().scene = newScene;
+        get().scene.load();
         get().scene.init();
         get().scene.start();
     }

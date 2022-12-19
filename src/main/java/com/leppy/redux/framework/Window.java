@@ -118,6 +118,12 @@ public class Window {
         // Enable v-sync
         glfwSwapInterval(1);
 
+        // set callback to update dimension vars
+        glfwSetWindowSizeCallback(this.handle, (w, newWidth, newHeight) -> {
+            Window.setWidth(newWidth);
+            Window.setHeight(newHeight);
+        });
+
         // Make the window visible
         glfwShowWindow(this.handle);
     }
@@ -162,5 +168,14 @@ public class Window {
 
     public void clearColor(RGBFWrapper color) {
         glClearColor(color.R, color.G, color.B, color.F);
+    }
+
+
+    public static void setWidth(int newWidth) {
+        get().width = newWidth;
+    }
+
+    public static void setHeight(int newHeight) {
+        get().height = newHeight;
     }
 }

@@ -17,7 +17,6 @@ public class Main {
         new Main(); // Initialize things
 
         ReduxEngine.init();
-        ReduxEngine.changeScene(new GameScene());
         ReduxEngine.start();
         ReduxEngine.terminate();
     }
