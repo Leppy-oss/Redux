@@ -1,6 +1,7 @@
 package com.leppy.redux.engine;
 
-import com.leppy.redux.framework.Window;
+import com.leppy.redux.scenes.Scene;
+import com.leppy.redux.core.Window;
 import imgui.*;
 import imgui.flag.ImGuiConfigFlags;
 import imgui.flag.ImGuiFreeTypeBuilderFlags;

@@ -1,9 +1,6 @@
 package com.leppy.redux;
 
-import com.leppy.redux.engine.GameScene;
 import com.leppy.redux.engine.ReduxEngine;
-import com.leppy.redux.framework.Mouse;
-import com.leppy.redux.framework.Window;
 
 import static org.lwjgl.glfw.GLFW.*;
 

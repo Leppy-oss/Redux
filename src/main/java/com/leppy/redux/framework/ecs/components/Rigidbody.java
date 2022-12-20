@@ -1,6 +1,5 @@
 package com.leppy.redux.framework.ecs.components;
 
-import com.leppy.redux.framework.ecs.Component;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 

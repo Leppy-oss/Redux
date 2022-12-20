@@ -1,0 +1,221 @@
+package com.leppy.redux.scenes;
+
+import com.google.gson.*;
+import com.leppy.redux.core.*;
+import com.leppy.redux.engine.ReduxEngine;
+import com.leppy.redux.framework.*;
+import com.leppy.redux.framework.ecs.*;
+import com.leppy.redux.framework.ecs.components.*;
+import com.leppy.redux.framework.render.DebugDraw;
+import com.leppy.redux.util.*;
+import imgui.*;
+import org.joml.*;
+
+import java.lang.Math;
+
+import static org.lwjgl.glfw.GLFW.*;
+import static com.leppy.redux.util.Constants.*;
+
+public class GameScene extends Scene {
+    private static double FADE_CONST = 5.0;
+
+    private STATE state = STATE.IDLE;
+    private volatile double dt = -1;
+    private GameObject testPlayer;
+    private GameObject obj1;
+    private int spriteIndex = 0;
+    private float spriteFlipTime = 0.1f;
+    private float spriteFlipTimeLeft = 0.0f;
+    private Spritesheet sprites;
+    private Spritesheet tiles;
+    private boolean showText = false;
+    private MouseControls mouseControls;
+
+    transient Vector2f[] texCoords1 = {
+            new Vector2f(0.5f, 0.5f),
+            new Vector2f(0.5f, 0),
+            new Vector2f(0, 0),
+            new Vector2f(0, 0.5f)
+    };
+    transient Vector2f[] texCoords2 = {
+            new Vector2f(1.0f, 1.0f),
+            new Vector2f(1.0f, 0.5f),
+            new Vector2f(0.5f, 0.5f),
+            new Vector2f(0.5f, 1.0f)
+    };
+
+    public GameScene() {}
+
+    @Override
+    public void init() {
+        this.loadResources();
+
+        this.mouseControls = new MouseControls();
+        this.camera = new Camera(new Vector2f(0, 0));
+        if (loaded) {
+            this.activeGameObject = gameObjects.get(0);
+            return;
+        }
+
+        testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
+        testPlayer.addComponent(new SpriteRenderer(sprites.getSprite(0)));
+        this.addGameObjectToScene(testPlayer);
+
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
+                new Vector2f(256, 256)), 2);
+
+        obj1.addComponent(new SpriteRenderer(new Vector4f(1, 0, 0, 1)));
+        obj1.addComponent(new Rigidbody());
+
+        /*
+        obj1.addComponent(new SpriteRenderer(new Sprite(
+                AssetPool.getTexture("assets/images/blendImage1.png")
+        )));
+        */
+
+        GameObject obj2 = new GameObject("Object 2",
+                new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 3);
+        obj2.addComponent(new SpriteRenderer(new Sprite(
+                AssetPool.getTexture("assets/images/blendImage2.png")
+        )));
+        this.addGameObjectToScene(obj1);
+        this.addGameObjectToScene(obj2);
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+    }
+
+    float t = 0.0f;
+
+    @Override
+    public void update(double dt) {
+        this.dt = dt;
+        this.handleControls();
+        this.handleState();
+        this.draw();
+    }
+
+    public void handleControls() {
+        if (state != STATE.TRANSITIONING && Input.keyboard().wasJustPressed(GLFW_KEY_SPACE)) state = STATE.TRANSITIONING;
+        if (Input.wasJustPressed(GLFW_KEY_ESCAPE)) ReduxEngine.quit();
+        if (Input.mouseJustPressed(GLFW_MOUSE_BUTTON_LEFT)) camera.setPosition(new Vector2f(testPlayer.transform.position.x, testPlayer.transform.position.y));
+        else if (Input.mouseJustPressed(GLFW_MOUSE_BUTTON_RIGHT)) camera.setPosition(new Vector2f());
+        camera.offsetPosition((float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.HORIZONTAL_AXIS)), (float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.VERTICAL_AXIS)));
+        mouseControls.update((float) dt);
+    }
+
+    public void handleState() {
+        switch (state) {
+            case TRANSITIONING: {
+                RGBFWrapper windowColor = Window.getColor();
+                if (windowColor.R > 0 || windowColor.G > 0 || windowColor.B > 0) {
+                    Window.get().color.R -= dt * FADE_CONST;
+                    Window.get().color.G -= dt * FADE_CONST;
+                    Window.get().color.B -= dt * FADE_CONST;
+                } else state = STATE.IDLE;
+                break;
+            }
+            case IDLE:
+            default:
+                break;
+        }
+    }
+
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
+
+        AssetPool.addSpritesheet("run-spritesheet",
+                new Spritesheet(AssetPool.getTexture("assets/images/player-spritesheet-run.png"),
+                        32, 38, 6, 0));
+
+        AssetPool.addSpritesheet("64x-tiles",
+                new Spritesheet(AssetPool.getTexture("assets/images/td/Tilesheet/towerDefense_tilesheet.png"),
+                        64, 64, 299, 0));
+
+        AssetPool.getTexture("assets/images/blendImage2.png");
+        sprites = AssetPool.getSpritesheet("run-spritesheet");
+        tiles = AssetPool.getSpritesheet("64x-tiles");
+    }
+
+    public void draw() {
+        float x = ((float) Math.sin(t) * 200.0f) + 600;
+        float y = ((float) Math.cos(t) * 200.0f) + 400;
+        t += 0.05f;
+        DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(0, 0, 1));
+        // System.out.println("FPS: " + (1.0f / dt));
+
+        for (GameObject go : this.gameObjects) {
+            go.update((float) dt);
+        }
+
+        spriteFlipTimeLeft -= dt;
+        if (spriteFlipTimeLeft <= 0) {
+            spriteFlipTimeLeft = spriteFlipTime;
+            spriteIndex++;
+            if (spriteIndex > 5) spriteIndex = 0;
+        }
+        testPlayer.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
+        testPlayer.transform.position.x += 2f;
+
+        this.renderer.render();
+    }
+
+    public enum STATE {
+        IDLE,
+        TRANSITIONING
+    }
+
+    @Override
+    public void imgui() {
+        ImGui.begin("Redux UI");
+
+        ImGui.text("Standard Towers");
+        ImGui.selectable("aaa");
+        ImGui.showDemoWindow();
+
+        if (ImGui.button("Show towers")) {
+            showText = true;
+        }
+
+        if (showText) {
+            ImGui.text("You clicked a button");
+            if (ImGui.button("Stop showing text")) {
+                showText = false;
+            }
+        }
+
+        ImVec2 windowPos = new ImVec2();
+        ImGui.getWindowPos(windowPos);
+        ImVec2 windowSize = new ImVec2();
+        ImGui.getWindowSize(windowSize);
+        ImVec2 itemSpacing = new ImVec2();
+        ImGui.getStyle().getItemSpacing(itemSpacing);
+
+        float windowX2 = windowPos.x + windowSize.x;
+        for (int i=0; i < tiles.size(); i++) {
+            Sprite sprite = tiles.getSprite(i);
+            double spriteWidth = sprite.getWidth() * UI_TILE_MULT;
+            double spriteHeight = sprite.getHeight() * UI_TILE_MULT;
+            int id = sprite.getTexId();
+            Vector2f[] texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(i);
+            if (ImGui.imageButton(id, (float) spriteWidth, (float) spriteHeight, texCoords[0].x, texCoords[0].y, texCoords[2].x, texCoords[2].y)) {
+                GameObject object = Prefabs.generateSpriteObject(sprite, (float) spriteWidth, (float) spriteHeight);
+                mouseControls.pickupObject(object);
+            }
+            ImGui.popID();
+
+            ImVec2 lastButtonPos = new ImVec2();
+            ImGui.getItemRectMax(lastButtonPos);
+            double lastButtonX2 = lastButtonPos.x;
+            double nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+            if (i + 1 < tiles.size() && nextButtonX2 < windowX2) {
+                ImGui.sameLine();
+            }
+        }
+
+        ImGui.end();
+    }
+}

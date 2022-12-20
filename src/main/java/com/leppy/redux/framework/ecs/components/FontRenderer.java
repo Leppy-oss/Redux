@@ -1,7 +1,5 @@
 package com.leppy.redux.framework.ecs.components;
 
-import com.leppy.redux.framework.ecs.Component;
-
 public class FontRenderer extends Component {
 
     @Override

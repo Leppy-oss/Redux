@@ -76,4 +76,9 @@ public class Texture {
 
         stbi_image_free(image);
     }
+
+
+    public int getId() {
+        return texID;
+    }
 }

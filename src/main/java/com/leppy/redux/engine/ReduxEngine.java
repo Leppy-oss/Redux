@@ -1,10 +1,15 @@
 package com.leppy.redux.engine;
 
-import com.leppy.redux.framework.ControlSystem;
-import com.leppy.redux.framework.Window;
+import com.leppy.redux.framework.render.DebugDraw;
+import com.leppy.redux.scenes.GameScene;
+import com.leppy.redux.scenes.Scene;
+import com.leppy.redux.core.Input;
+import com.leppy.redux.core.Window;
+import com.leppy.redux.util.ImageParser;
 import imgui.ImGui;
 import imgui.ImGuiIO;
 import imgui.flag.ImGuiConfigFlags;
+import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -22,11 +27,12 @@ public class ReduxEngine {
 
     protected static final String glslVersion = "#version 300 es"; // from basic.glsl, default.glsl, etc.
     private ImGuiLayer imguilayer;
+    private final ImageParser logoIcon = ImageParser.load_image("assets/images/branding/redux-logo.png");
 
     public ReduxEngine() {
         dt = -1;
         prevTime = 0;
-        ControlSystem.setInstance(Window.getHandle());
+        Input.setInstance(Window.getHandle());
     }
 
     public static ReduxEngine get() {
@@ -49,8 +55,9 @@ public class ReduxEngine {
             double endTime = glfwGetTime();
             get().dt = endTime - get().prevTime;
             get().prevTime = endTime;
-            ControlSystem.update();
+            Input.update();
             render();
+            Input.endFrame();
         }
         get().scene.saveExit();
     }
@@ -73,6 +80,11 @@ public class ReduxEngine {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+        GLFWImage image = GLFWImage.malloc(); GLFWImage.Buffer imagebf = GLFWImage.malloc(1);
+        image.set(get().logoIcon.getWidth(), get().logoIcon.getHeight(), get().logoIcon.getImage());
+        imagebf.put(0, image);
+        glfwSetWindowIcon(Window.getHandle(), imagebf);
+
         initImGui();
 
         get().imguilayer = new ImGuiLayer();
@@ -87,6 +99,10 @@ public class ReduxEngine {
 
         Window.get().clearColor(Window.get().color); // Paint background
         glClear(GL_COLOR_BUFFER_BIT);
+
+        DebugDraw.beginFrame();
+
+        DebugDraw.draw();
         get().scene.update(get().dt);
         get().imguilayer.update(get().scene);
 
@@ -104,7 +120,7 @@ public class ReduxEngine {
 
     public static void changeScene(Scene newScene) {
         get().scene = newScene;
-        get().scene.load();
+        // get().scene.load();
         get().scene.init();
         get().scene.start();
     }

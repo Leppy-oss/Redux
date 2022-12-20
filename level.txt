@@ -18,105 +18,34 @@
               "width": 96,
               "height": 76
             },
+            "width": 32.0,
+            "height": 38.0,
             "texCoords": [
               {
-                "x": 0.33333334,
+                "x": 0.6666667,
                 "y": 1.0
               },
               {
+                "x": 0.6666667,
+                "y": 0.5
+              },
+              {
                 "x": 0.33333334,
                 "y": 0.5
               },
               {
-                "x": 0.0,
-                "y": 0.5
-              },
-              {
-                "x": 0.0,
+                "x": 0.33333334,
                 "y": 1.0
               }
             ]
-          }
-        }
-      },
-      {
-        "type": "com.leppy.redux.framework.ecs.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
           },
-          "sprite": {
-            "texture": {
-              "filepath": "assets/images/player-spritesheet-run.png",
-              "texID": 2,
-              "width": 96,
-              "height": 76
-            },
-            "texCoords": [
-              {
-                "x": 0.33333334,
-                "y": 1.0
-              },
-              {
-                "x": 0.33333334,
-                "y": 0.5
-              },
-              {
-                "x": 0.0,
-                "y": 0.5
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          }
-        }
-      },
-      {
-        "type": "com.leppy.redux.framework.ecs.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "texture": {
-              "filepath": "assets/images/player-spritesheet-run.png",
-              "texID": 2,
-              "width": 96,
-              "height": 76
-            },
-            "texCoords": [
-              {
-                "x": 0.33333334,
-                "y": 1.0
-              },
-              {
-                "x": 0.33333334,
-                "y": 0.5
-              },
-              {
-                "x": 0.0,
-                "y": 0.5
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          }
+          "uid": 0
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 100.0,
+        "x": 812.0,
         "y": 100.0
       },
       "scale": {
@@ -124,7 +53,8 @@
         "y": 256.0
       }
     },
-    "zIndex": 4
+    "zIndex": 4,
+    "uid": 0
   },
   {
     "name": "Object 1",
@@ -139,6 +69,8 @@
             "w": 1.0
           },
           "sprite": {
+            "width": 0.0,
+            "height": 0.0,
             "texCoords": [
               {
                 "x": 1.0,
@@ -157,7 +89,8 @@
                 "y": 1.0
               }
             ]
-          }
+          },
+          "uid": 1
         }
       },
       {
@@ -169,7 +102,8 @@
             "x": 0.0,
             "y": 0.5,
             "z": 0.0
-          }
+          },
+          "uid": 2
         }
       }
     ],
@@ -183,7 +117,8 @@
         "y": 256.0
       }
     },
-    "zIndex": 2
+    "zIndex": 2,
+    "uid": 1
   },
   {
     "name": "Object 2",
@@ -200,10 +135,12 @@
           "sprite": {
             "texture": {
               "filepath": "assets/images/blendImage2.png",
-              "texID": 3,
+              "texID": 4,
               "width": 256,
               "height": 256
             },
+            "width": 0.0,
+            "height": 0.0,
             "texCoords": [
               {
                 "x": 1.0,
@@ -222,7 +159,8 @@
                 "y": 1.0
               }
             ]
-          }
+          },
+          "uid": 3
         }
       }
     ],
@@ -236,6 +174,7 @@
         "y": 256.0
       }
     },
-    "zIndex": 3
+    "zIndex": 3,
+    "uid": 2
   }
 ]

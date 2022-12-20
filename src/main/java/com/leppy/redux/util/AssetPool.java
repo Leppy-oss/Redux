@@ -1,6 +1,6 @@
 package com.leppy.redux.util;
 
-import com.leppy.redux.framework.ecs.components.Spritesheet;
+import com.leppy.redux.framework.Spritesheet;
 import com.leppy.redux.framework.render.*;
 
 import java.io.File;
