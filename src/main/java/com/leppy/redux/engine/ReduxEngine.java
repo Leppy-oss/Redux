@@ -1,11 +1,11 @@
 package com.leppy.redux.engine;
 
-import com.leppy.redux.framework.render.DebugDraw;
-import com.leppy.redux.framework.render.Framebuffer;
-import com.leppy.redux.scenes.GameScene;
-import com.leppy.redux.scenes.Scene;
 import com.leppy.redux.core.Input;
 import com.leppy.redux.core.Window;
+import com.leppy.redux.framework.render.*;
+import com.leppy.redux.scenes.GameScene;
+import com.leppy.redux.scenes.Scene;
+import com.leppy.redux.util.AssetPool;
 import com.leppy.redux.util.ImageParser;
 import imgui.ImGui;
 import imgui.ImGuiIO;
@@ -13,7 +13,6 @@ import imgui.flag.ImGuiConfigFlags;
 import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
 
-import static com.leppy.redux.util.Constants.*;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -29,6 +28,7 @@ public class ReduxEngine {
     private ImGuiLayer imguilayer;
     private final ImageParser logoIcon = ImageParser.load_image("assets/images/branding/redux-logo.png");
     private Framebuffer framebuffer;
+    private PickingTexture pickingTexture;
 
     public ReduxEngine() {
         dt = -1;
@@ -88,8 +88,9 @@ public class ReduxEngine {
 
         initImGui();
 
-        get().imguilayer = new ImGuiLayer();
         get().framebuffer = new Framebuffer(Window.getWidth(), Window.getHeight());
+        get().pickingTexture = new PickingTexture(Window.getWidth(), Window.getHeight());
+        get().imguilayer = new ImGuiLayer(Window.getHandle(), get().pickingTexture);
         glViewport(0, 0, Window.getWidth(), Window.getHeight());
 
         ReduxEngine.changeScene(new GameScene());
@@ -99,17 +100,37 @@ public class ReduxEngine {
      * Basically an update function
      */
     public static void render() {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+        Shader defaultShader = AssetPool.getShader("assets/shaders/basic.glsl");
+        Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+
+        // Render pass 1. Render to picking texture
+        glDisable(GL_BLEND);
+        get().pickingTexture.enableWriting();
+
+        glViewport(0, 0, Window.getWidth(), Window.getHeight());
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        Renderer.bindShader(pickingShader);
+        get().scene.render();
+
+        get().pickingTexture.disableWriting();
+        glEnable(GL_BLEND);
+
+        // Render pass 2. Render actual game
         get().framebuffer.bind();
 
         Window.get().clearColor(Window.get().color); // Paint background
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
+        Renderer.bindShader(defaultShader);
+
         DebugDraw.beginFrame();
         DebugDraw.draw();
 
         get().scene.update(get().dt);
+        get().scene.render();
 
         get().framebuffer.unbind(); // The framebuffer MUST be unbound before the imgui viewport is updated aaaaaa
         get().imguilayer.update(get().scene);

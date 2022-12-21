@@ -1,7 +1,7 @@
 package com.leppy.redux.core;
 
 import com.leppy.redux.engine.ReduxEngine;
-import org.joml.Vector4f;
+import org.joml.*;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -14,6 +14,9 @@ public class Mouse {
             lX, lY; // Last x, y
 
     private Button mouseButtons[] = new Button[SIZE]; // left click, middle click, right click
+
+    private Vector2f gameViewportPos = new Vector2f();
+    private Vector2f gameViewportSize = new Vector2f();
 
     /**
      * Dragging only works with LMB
@@ -117,23 +120,51 @@ public class Mouse {
         return false;
     }
 
+    public float getScreenX() {
+        float currentX = (float) (this.cX() - this.gameViewportPos.x);
+        currentX = (currentX / this.gameViewportSize.x) * Window.getWidth();
+        return currentX;
+    }
+
+    public float getScreenY() {
+        float currentY = (float) (this.cY() - this.gameViewportPos.y);
+        currentY = Window.getHeight() - ((currentY / this.gameViewportSize.y) * Window.getHeight());
+        return currentY;
+    }
+
     public float getOrthoX() {
-        float currentX = (float) cX();
-        currentX = (currentX / (float)Window.getWidth()) * 2.0f - 1.0f;
+        float currentX = (float) (this.cX() - this.gameViewportPos.x);
+        currentX = (currentX / this.gameViewportSize.x) * 2.0f - 1.0f;
         Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
-        tmp.mul(ReduxEngine.getScene().camera().getInverseProjection()).mul(ReduxEngine.getScene().camera().getInverseView());
+
+        Camera camera = ReduxEngine.getScene().camera();
+        Matrix4f viewProjection = new Matrix4f();
+        camera.getInverseView().mul(camera.getInverseProjection(), viewProjection);
+        tmp.mul(viewProjection);
         currentX = tmp.x;
 
         return currentX;
     }
 
     public float getOrthoY() {
-        float currentY = (float) (Window.getHeight() - cY());
-        currentY = (currentY / (float)Window.getHeight()) * 2.0f - 1.0f;
+        float currentY = (float) (this.cY() - this.gameViewportPos.y);
+        currentY = -((currentY / this.gameViewportSize.y) * 2.0f - 1.0f);
         Vector4f tmp = new Vector4f(0, currentY, 0, 1);
-        tmp.mul(ReduxEngine.getScene().camera().getInverseProjection()).mul(ReduxEngine.getScene().camera().getInverseView());
+
+        Camera camera = ReduxEngine.getScene().camera();
+        Matrix4f viewProjection = new Matrix4f();
+        camera.getInverseView().mul(camera.getInverseProjection(), viewProjection);
+        tmp.mul(viewProjection);
         currentY = tmp.y;
 
         return currentY;
+    }
+
+    public void setGameViewportPos(Vector2f gameViewportPos) {
+        this.gameViewportPos.set(gameViewportPos);
+    }
+
+    public void setGameViewportSize(Vector2f gameViewportSize) {
+        this.gameViewportSize.set(gameViewportSize);
     }
 }

@@ -4,23 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="refactoring, DebugDrawing improvements (boxes, circles, etc.), wasJustReleased() functions added to the input classes, improved drag-and-drop functionality to include actual hold to draw (mostly working); added JMath.java to compare and rotate Vectors">
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Ruda-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" afterDir="false" />
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="framebuffering, viewports, imgui themes, ruda-bold font, and more added!">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/PropertiesWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/PickingTexture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/PhysicsSystem2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/forces/ForceGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/forces/ForceRegistration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/forces/ForceRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/forces/Gravity2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/AABB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Box2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Collider2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Ray2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/RaycastResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/CollisionManifold.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/Collisions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/IntersectionDetector2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/Rigidbody2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/pickingShader.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/pickingShader.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GridLines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/GridLines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/MultiSpriteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/MultiSpriteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Framebuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Framebuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Line2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Line2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671581920168</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="framebuffering, viewports, imgui themes, ruda-bold font, and more added!">
+      <created>1671594765709</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1671594765709</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,6 +272,7 @@
     <MESSAGE value="added drag and drop, window logo/icon, basic level editing, imgui initialization/saving, prefabs, gameobject UIDs, asset UIDs, and some extra serialization features" />
     <MESSAGE value="remove extraneous error logs" />
     <MESSAGE value="refactoring, DebugDrawing improvements (boxes, circles, etc.), wasJustReleased() functions added to the input classes, improved drag-and-drop functionality to include actual hold to draw (mostly working); added JMath.java to compare and rotate Vectors" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring, DebugDrawing improvements (boxes, circles, etc.), wasJustReleased() functions added to the input classes, improved drag-and-drop functionality to include actual hold to draw (mostly working); added JMath.java to compare and rotate Vectors" />
+    <MESSAGE value="framebuffering, viewports, imgui themes, ruda-bold font, and more added!" />
+    <option name="LAST_COMMIT_MESSAGE" value="framebuffering, viewports, imgui themes, ruda-bold font, and more added!" />
   </component>
 </project>

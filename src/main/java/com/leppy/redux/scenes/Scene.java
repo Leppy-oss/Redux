@@ -17,7 +17,6 @@ public abstract class Scene {
     protected Camera camera;
     private boolean isRunning = false;
     protected List<GameObject> gameObjects = new ArrayList<>();
-    protected GameObject activeGameObject = null;
     protected boolean loaded = false;
 
     public Scene() {
@@ -48,10 +47,20 @@ public abstract class Scene {
 
     public abstract void update(double dt);
 
+    public abstract void render();
+
+    public GameObject getGameObject(int gameObjectId) {
+        Optional<GameObject> result = this.gameObjects.stream()
+                .filter(gameObject -> gameObject.getUid() == gameObjectId)
+                .findFirst();
+        return result.orElse(null);
+    }
+
     public Camera camera() {
         return this.camera;
     }
 
+    /*
     public void sceneImgui() {
         if (activeGameObject != null) {
             ImGui.begin("Inspector");
@@ -61,6 +70,7 @@ public abstract class Scene {
 
         imgui();
     }
+    */
 
     public void imgui() {
 

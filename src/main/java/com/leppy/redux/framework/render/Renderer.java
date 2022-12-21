@@ -3,14 +3,12 @@ package com.leppy.redux.framework.render;
 import com.leppy.redux.framework.ecs.*;
 import com.leppy.redux.framework.ecs.components.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Renderer {
     private final int MAX_BATCH_SIZE = 1000;
     private List<RenderBatch> batches;
+    private static Shader currentShader;
 
     public Renderer() {
         this.batches = new ArrayList<>();
@@ -45,7 +43,16 @@ public class Renderer {
         }
     }
 
+    public static void bindShader(Shader shader) {
+        currentShader = shader;
+    }
+
+    public static Shader getBoundShader() {
+        return currentShader;
+    }
+
     public void render() {
+        currentShader.use();
         for (RenderBatch batch : batches) {
             batch.render();
         }

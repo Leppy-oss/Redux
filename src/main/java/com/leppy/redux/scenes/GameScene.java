@@ -58,13 +58,6 @@ public class GameScene extends Scene {
 
         this.camera = new Camera(new Vector2f(0, 0));
 
-        if (loaded) {
-            if (gameObjects.size() > 2) {
-                this.activeGameObject = gameObjects.get(2);
-            }
-            return;
-        }
-
         /*
         testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
         testPlayer.addComponent(new SpriteRenderer(sprites.getSprite(0)));
@@ -132,7 +125,7 @@ public class GameScene extends Scene {
     }
 
     private void loadResources() {
-        AssetPool.getShader("assets/shaders/default.glsl");
+        AssetPool.getShader("assets/shaders/basic.glsl");
 
         AssetPool.addSpritesheet("run-spritesheet",
                 new Spritesheet(AssetPool.getTexture("assets/images/player-spritesheet-run.png"),
@@ -198,19 +191,18 @@ public class GameScene extends Scene {
 
     @Override
     public void imgui() {
-        ImGui.begin("Redux UI");
+        ImGui.begin("Map Editor");
 
-        ImGui.text("Standard Towers");
-        ImGui.selectable("aaa");
+        ImGui.text("Standard Tiles");
         ImGui.showDemoWindow();
 
-        if (ImGui.button("Show towers")) {
+        if (ImGui.button("Click For More Tiles")) {
             showText = true;
         }
 
         if (showText) {
-            ImGui.text("You clicked a button");
-            if (ImGui.button("Stop showing text")) {
+            ImGui.text("jk i havent put them in yet");
+            if (ImGui.button("Stop Showing \"Extra\" Tiles")) {
                 showText = false;
             }
         }
@@ -247,5 +239,10 @@ public class GameScene extends Scene {
         }
 
         ImGui.end();
+    }
+
+    @Override
+    public void render() {
+        this.renderer.render();
     }
 }

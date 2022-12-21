@@ -1,6 +1,7 @@
 package com.leppy.redux.engine;
 
-import com.leppy.redux.framework.GameWindow;
+import com.leppy.redux.framework.*;
+import com.leppy.redux.framework.render.PickingTexture;
 import com.leppy.redux.scenes.Scene;
 import com.leppy.redux.core.Window;
 import imgui.*;
@@ -19,13 +20,22 @@ public class ImGuiLayer {
     private ImFont font;
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
     private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
+    private GameWindow gameWindow;
+    private long glfwHandle;
+
     public static final Vector3f color_for_text = new Vector3f(236.f / 255.f, 240.f / 255.f, 241.f / 255.f);
     public static final Vector3f color_for_head = new Vector3f(41.f / 255.f, 128.f / 255.f, 185.f / 255.f);
     public static final Vector3f color_for_area = new Vector3f(57.f / 255.f, 79.f / 255.f, 105.f / 255.f);
     public static final Vector3f color_for_body = new Vector3f(44.f / 255.f, 62.f / 255.f, 80.f / 255.f);
     public static final Vector3f color_for_pops = new Vector3f(33.f / 255.f, 46.f / 255.f, 60.f / 255.f);
 
-    public ImGuiLayer() {
+    private GameWindow gameViewWindow;
+    private PropertiesWindow propertiesWindow;
+
+    public ImGuiLayer(long glfwHandle, PickingTexture pickingTexture) {
+        this.glfwHandle = glfwHandle;
+        this.gameViewWindow = new GameWindow();
+        this.propertiesWindow = new PropertiesWindow(pickingTexture);
         this.init();
     }
 
@@ -33,9 +43,11 @@ public class ImGuiLayer {
         this.imGuiGlfw.newFrame();
         ImGui.newFrame();
         this.setupDockspace();
-        currentScene.sceneImgui();
+        currentScene.imgui();
         ImGui.showDemoWindow();
-        GameWindow.imgui();
+        gameWindow.imgui();
+        propertiesWindow.update(currentScene);
+        propertiesWindow.imgui();
         ImGui.end();
         ImGui.render();
         endImGuiFrame();
@@ -49,8 +61,10 @@ public class ImGuiLayer {
         io.setBackendPlatformName("imgui_java_impl_glfw");
         initFont("Ruda-Bold.ttf", 18);
 
+        gameWindow = new GameWindow();
         // this.easyColorTheme(color_for_text, color_for_head, color_for_area, color_for_body, color_for_pops);
-        this.sonicTheme();
+        // this.sonicTheme();
+        this.embraceTheDarkness();
 
         this.imGuiGl3.init(glslVersion);
     }
@@ -133,6 +147,90 @@ public class ImGuiLayer {
         style.setColor(TextSelectedBg, color_for_head.x, color_for_head.y, color_for_head.z, 0.43f );
         style.setColor(PopupBg, color_for_pops.x, color_for_pops.y, color_for_pops.z, 0.92f );
 //        style.setColor(ModalWindowDarkening, color_for_area.x, color_for_area.y, color_for_area.z, 0.73f );
+    }
+    
+    public void embraceTheDarkness() {
+        ImGuiStyle style = ImGui.getStyle();
+        
+        style.setColor(Text, 1.00f, 1.00f, 1.00f, 1.00f);
+        style.setColor(TextDisabled, 0.50f, 0.50f, 0.50f, 1.00f);
+        style.setColor(WindowBg, 0.10f, 0.10f, 0.10f, 1.00f);
+        style.setColor(ChildBg, 0.00f, 0.00f, 0.00f, 0.00f);
+        style.setColor(PopupBg, 0.19f, 0.19f, 0.19f, 0.92f);
+        style.setColor(Border, 0.19f, 0.19f, 0.19f, 0.29f);
+        style.setColor(BorderShadow, 0.00f, 0.00f, 0.00f, 0.24f);
+        style.setColor(FrameBg, 0.05f, 0.05f, 0.05f, 0.54f);
+        style.setColor(FrameBgHovered, 0.19f, 0.19f, 0.19f, 0.54f);
+        style.setColor(FrameBgActive, 0.20f, 0.22f, 0.23f, 1.00f);
+        style.setColor(TitleBg, 0.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(TitleBgActive, 0.06f, 0.06f, 0.06f, 1.00f);
+        style.setColor(TitleBgCollapsed, 0.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(MenuBarBg, 0.14f, 0.14f, 0.14f, 1.00f);
+        style.setColor(ScrollbarBg, 0.05f, 0.05f, 0.05f, 0.54f);
+        style.setColor(ScrollbarGrab, 0.34f, 0.34f, 0.34f, 0.54f);
+        style.setColor(ScrollbarGrabHovered, 0.40f, 0.40f, 0.40f, 0.54f);
+        style.setColor(ScrollbarGrabActive, 0.56f, 0.56f, 0.56f, 0.54f);
+        style.setColor(CheckMark, 0.33f, 0.67f, 0.86f, 1.00f);
+        style.setColor(SliderGrab, 0.34f, 0.34f, 0.34f, 0.54f);
+        style.setColor(SliderGrabActive, 0.56f, 0.56f, 0.56f, 0.54f);
+        style.setColor(Button, 0.05f, 0.05f, 0.05f, 0.54f);
+        style.setColor(ButtonHovered, 0.19f, 0.19f, 0.19f, 0.54f);
+        style.setColor(ButtonActive, 0.20f, 0.22f, 0.23f, 1.00f);
+        style.setColor(Header, 0.00f, 0.00f, 0.00f, 0.52f);
+        style.setColor(HeaderHovered, 0.00f, 0.00f, 0.00f, 0.36f);
+        style.setColor(HeaderActive, 0.20f, 0.22f, 0.23f, 0.33f);
+        style.setColor(Separator, 0.28f, 0.28f, 0.28f, 0.29f);
+        style.setColor(SeparatorHovered, 0.44f, 0.44f, 0.44f, 0.29f);
+        style.setColor(SeparatorActive, 0.40f, 0.44f, 0.47f, 1.00f);
+        style.setColor(ResizeGrip, 0.28f, 0.28f, 0.28f, 0.29f);
+        style.setColor(ResizeGripHovered, 0.44f, 0.44f, 0.44f, 0.29f);
+        style.setColor(ResizeGripActive, 0.40f, 0.44f, 0.47f, 1.00f);
+        style.setColor(Tab, 0.00f, 0.00f, 0.00f, 0.52f);
+        style.setColor(TabHovered, 0.14f, 0.14f, 0.14f, 1.00f);
+        style.setColor(TabActive, 0.20f, 0.20f, 0.20f, 0.36f);
+        style.setColor(TabUnfocused, 0.00f, 0.00f, 0.00f, 0.52f);
+        style.setColor(TabUnfocusedActive, 0.14f, 0.14f, 0.14f, 1.00f);
+        style.setColor(DockingPreview, 0.33f, 0.67f, 0.86f, 1.00f);
+        style.setColor(DockingEmptyBg, 1.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(PlotLines, 1.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(PlotLinesHovered, 1.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(PlotHistogram, 1.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(PlotHistogramHovered, 1.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(TableHeaderBg, 0.00f, 0.00f, 0.00f, 0.52f);
+        style.setColor(TableBorderStrong, 0.00f, 0.00f, 0.00f, 0.52f);
+        style.setColor(TableBorderLight, 0.28f, 0.28f, 0.28f, 0.29f);
+        style.setColor(TableRowBg, 0.00f, 0.00f, 0.00f, 0.00f);
+        style.setColor(TableRowBgAlt, 1.00f, 1.00f, 1.00f, 0.06f);
+        style.setColor(TextSelectedBg, 0.20f, 0.22f, 0.23f, 1.00f);
+        style.setColor(DragDropTarget, 0.33f, 0.67f, 0.86f, 1.00f);
+        style.setColor(NavHighlight, 1.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(NavWindowingHighlight, 1.00f, 0.00f, 0.00f, 0.70f);
+        style.setColor(NavWindowingDimBg, 1.00f, 0.00f, 0.00f, 0.20f);
+        style.setColor(ModalWindowDimBg, 1.00f, 0.00f, 0.00f, 0.35f);
+        
+
+        style.setWindowPadding(8.00f, 8.00f);
+        style.setFramePadding(5.00f, 2.00f);
+        style.setCellPadding(6.00f, 6.00f);
+        style.setItemSpacing(6.00f, 6.00f);
+        style.setItemInnerSpacing(6.00f, 6.00f);
+        style.setTouchExtraPadding(0.00f, 0.00f);
+        style.setIndentSpacing(25);
+        style.setScrollbarSize(15);
+        style.setGrabMinSize(10);
+        style.setWindowBorderSize(1);
+        style.setChildBorderSize(1);
+        style.setPopupBorderSize(1);
+        style.setFrameBorderSize(1);
+        style.setTabBorderSize(1);
+        style.setWindowRounding(7);
+        style.setChildRounding(4);
+        style.setFrameRounding(3);
+        style.setPopupRounding(4);
+        style.setScrollbarRounding(9);
+        style.setGrabRounding(3);
+        style.setLogSliderDeadzone(4);
+        style.setTabRounding(4);
     }
     
     public void sonicTheme() {
