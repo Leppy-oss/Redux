@@ -33,6 +33,11 @@ public class Keyboard {
         else return false;
     }
 
+    public boolean wasJustReleased(int keyCode) {
+        if (keyCode < MAXSET && keyCode >= MINSET) return (this.keys[keyCode - MINSET].wasJustReleased());
+        else return false;
+    }
+
     /**
      * Prioritizes up/left is sumOfBoth is false
      * @param sumOfBoth Whether to count two keys in opposite directions as "conflicting" and cancel them out (-1 + 1 = 0)

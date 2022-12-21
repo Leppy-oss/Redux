@@ -67,12 +67,20 @@ public class Input {
         return keyboard().wasJustPressed(keyCode);
     }
 
+    public static boolean wasJustReleased(int keyCode) {
+        return keyboard().wasJustReleased(keyCode);
+    }
+
     public static boolean isPressed(int keyCode) {
         return keyboard().isPressed(keyCode);
     }
 
     public static boolean mouseJustPressed(int mouseCode) {
         return mouse().wasJustPressed(mouseCode);
+    }
+
+    public static boolean mouseJustReleased(int mouseCode) {
+        return mouse().wasJustReleased(mouseCode);
     }
 
     public static boolean isMousePressed(int mouseCode) {

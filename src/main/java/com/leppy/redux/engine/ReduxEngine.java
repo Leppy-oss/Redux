@@ -1,6 +1,7 @@
 package com.leppy.redux.engine;
 
 import com.leppy.redux.framework.render.DebugDraw;
+import com.leppy.redux.framework.render.Framebuffer;
 import com.leppy.redux.scenes.GameScene;
 import com.leppy.redux.scenes.Scene;
 import com.leppy.redux.core.Input;
@@ -28,6 +29,7 @@ public class ReduxEngine {
     protected static final String glslVersion = "#version 300 es"; // from basic.glsl, default.glsl, etc.
     private ImGuiLayer imguilayer;
     private final ImageParser logoIcon = ImageParser.load_image("assets/images/branding/redux-logo.png");
+    private Framebuffer framebuffer;
 
     public ReduxEngine() {
         dt = -1;
@@ -88,6 +90,7 @@ public class ReduxEngine {
         initImGui();
 
         get().imguilayer = new ImGuiLayer();
+        get().framebuffer = new Framebuffer(3840, 2160);
         ReduxEngine.changeScene(new GameScene());
     }
 
@@ -100,11 +103,16 @@ public class ReduxEngine {
         Window.get().clearColor(Window.get().color); // Paint background
         glClear(GL_COLOR_BUFFER_BIT);
 
-        DebugDraw.beginFrame();
+        //get().framebuffer.bind();
 
+        DebugDraw.beginFrame();
         DebugDraw.draw();
+
         get().scene.update(get().dt);
-        get().imguilayer.update(get().scene);
+
+        get().framebuffer.unbind();
+
+        get().imguilayer.update(get().scene); // must place this after scene updating
 
         glfwSwapBuffers(Window.getHandle()); // swap the color buffers
     }

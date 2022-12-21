@@ -95,6 +95,11 @@ public class Mouse {
         else return false;
     }
 
+    public boolean wasJustReleased(int button) {
+        if (button < SIZE) return this.mouseButtons[button].wasJustReleased();
+        else return false;
+    }
+
     public boolean isLeftPressed() {
         return this.isPressed(GLFW_MOUSE_BUTTON_1);
     }

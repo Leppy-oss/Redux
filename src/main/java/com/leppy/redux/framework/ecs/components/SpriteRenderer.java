@@ -86,4 +86,8 @@ public class SpriteRenderer extends Component {
     public void setClean() {
         this.isDirty = false;
     }
+
+    public Sprite getSprite() {
+        return this.sprite;
+    }
 }

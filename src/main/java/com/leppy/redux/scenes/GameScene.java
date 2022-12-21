@@ -29,7 +29,7 @@ public class GameScene extends Scene {
     private Spritesheet sprites;
     private Spritesheet tiles;
     private boolean showText = false;
-    private MouseControls mouseControls;
+    private GameObject gameIntrinsics;
 
     transient Vector2f[] texCoords1 = {
             new Vector2f(0.5f, 0.5f),
@@ -50,16 +50,21 @@ public class GameScene extends Scene {
     public void init() {
         this.loadResources();
 
-        this.mouseControls = new MouseControls();
+        this.gameIntrinsics = new GameObject("Game Intrinsics", new Transform(new Vector2f()), 0);
+        this.gameIntrinsics.addComponent(new MouseControls());
+        this.gameIntrinsics.addComponent(new GridLines());
+        this.addGameObjectToScene(gameIntrinsics);
+
         this.camera = new Camera(new Vector2f(0, 0));
         if (loaded) {
-            this.activeGameObject = gameObjects.get(0);
+            this.activeGameObject = gameObjects.get(1);
             return;
         }
 
         testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
         testPlayer.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(testPlayer);
+        this.activeGameObject = testPlayer;
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
                 new Vector2f(256, 256)), 2);
@@ -99,10 +104,9 @@ public class GameScene extends Scene {
     public void handleControls() {
         if (state != STATE.TRANSITIONING && Input.keyboard().wasJustPressed(GLFW_KEY_SPACE)) state = STATE.TRANSITIONING;
         if (Input.wasJustPressed(GLFW_KEY_ESCAPE)) ReduxEngine.quit();
-        if (Input.mouseJustPressed(GLFW_MOUSE_BUTTON_LEFT)) camera.setPosition(new Vector2f(testPlayer.transform.position.x, testPlayer.transform.position.y));
-        else if (Input.mouseJustPressed(GLFW_MOUSE_BUTTON_RIGHT)) camera.setPosition(new Vector2f());
+        if (Input.wasJustPressed(GLFW_KEY_F)) camera.setPosition(new Vector2f(testPlayer.transform.position.x, testPlayer.transform.position.y));
+        else if (Input.wasJustPressed(GLFW_KEY_E)) camera.setPosition(new Vector2f());
         camera.offsetPosition((float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.HORIZONTAL_AXIS)), (float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.VERTICAL_AXIS)));
-        mouseControls.update((float) dt);
     }
 
     public void handleState() {
@@ -143,10 +147,18 @@ public class GameScene extends Scene {
         float y = ((float) Math.cos(t) * 200.0f) + 400;
         t += 0.05f;
         DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(0, 0, 1));
+        DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(0, 1, 0), 1);
         // System.out.println("FPS: " + (1.0f / dt));
 
         for (GameObject go : this.gameObjects) {
             go.update((float) dt);
+        }
+
+
+        if (this.gameIntrinsics.getComponent(MouseControls.class).shouldCreateNewObject()) {
+            SpriteRenderer oldSprite = gameIntrinsics.getComponent(MouseControls.class).getHoldingObject().getComponent(SpriteRenderer.class);
+            GameObject object = Prefabs.generateSpriteObject(oldSprite.getSprite(), (float) oldSprite.getSprite().getWidth(), (float) oldSprite.getSprite().getHeight());
+            gameIntrinsics.getComponent(MouseControls.class).pickupObject(object);
         }
 
         spriteFlipTimeLeft -= dt;
@@ -155,8 +167,8 @@ public class GameScene extends Scene {
             spriteIndex++;
             if (spriteIndex > 5) spriteIndex = 0;
         }
-        testPlayer.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
-        testPlayer.transform.position.x += 2f;
+        // this.activeGameObject.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
+        // this.activeGameObject.transform.position.x += 2f;
 
         this.renderer.render();
     }
@@ -201,9 +213,9 @@ public class GameScene extends Scene {
             Vector2f[] texCoords = sprite.getTexCoords();
 
             ImGui.pushID(i);
-            if (ImGui.imageButton(id, (float) spriteWidth, (float) spriteHeight, texCoords[0].x, texCoords[0].y, texCoords[2].x, texCoords[2].y)) {
+            if (ImGui.imageButton(id, (float) spriteWidth, (float) spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) { //apparent mismatch in coords allows it to be properly flipped
                 GameObject object = Prefabs.generateSpriteObject(sprite, (float) spriteWidth, (float) spriteHeight);
-                mouseControls.pickupObject(object);
+                gameIntrinsics.getComponent(MouseControls.class).pickupObject(object);
             }
             ImGui.popID();
 

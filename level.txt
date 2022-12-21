@@ -1,5 +1,39 @@
 [
   {
+    "name": "Game Intrinsics",
+    "components": [
+      {
+        "type": "com.leppy.redux.framework.ecs.components.MouseControls",
+        "properties": {
+          "isHolding": false,
+          "wasJustDragging": false,
+          "shouldCreateNewObject": false,
+          "oldPosX": 0.0,
+          "oldPosY": 0.0,
+          "uid": 0
+        }
+      },
+      {
+        "type": "com.leppy.redux.framework.GridLines",
+        "properties": {
+          "uid": 1
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 0
+  },
+  {
     "name": "Testing Player",
     "components": [
       {
@@ -14,7 +48,7 @@
           "sprite": {
             "texture": {
               "filepath": "assets/images/player-spritesheet-run.png",
-              "texID": 2,
+              "texID": 3,
               "width": 96,
               "height": 76
             },
@@ -22,30 +56,30 @@
             "height": 38.0,
             "texCoords": [
               {
-                "x": 0.6666667,
+                "x": 0.33333334,
                 "y": 1.0
               },
               {
-                "x": 0.6666667,
-                "y": 0.5
-              },
-              {
                 "x": 0.33333334,
                 "y": 0.5
               },
               {
-                "x": 0.33333334,
+                "x": 0.0,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
                 "y": 1.0
               }
             ]
           },
-          "uid": 0
+          "uid": 2
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 812.0,
+        "x": 100.0,
         "y": 100.0
       },
       "scale": {
@@ -54,7 +88,7 @@
       }
     },
     "zIndex": 4,
-    "uid": 0
+    "uid": 1
   },
   {
     "name": "Object 1",
@@ -90,7 +124,7 @@
               }
             ]
           },
-          "uid": 1
+          "uid": 3
         }
       },
       {
@@ -103,7 +137,7 @@
             "y": 0.5,
             "z": 0.0
           },
-          "uid": 2
+          "uid": 4
         }
       }
     ],
@@ -118,7 +152,7 @@
       }
     },
     "zIndex": 2,
-    "uid": 1
+    "uid": 2
   },
   {
     "name": "Object 2",
@@ -135,7 +169,7 @@
           "sprite": {
             "texture": {
               "filepath": "assets/images/blendImage2.png",
-              "texID": 4,
+              "texID": 5,
               "width": 256,
               "height": 256
             },
@@ -160,7 +194,7 @@
               }
             ]
           },
-          "uid": 3
+          "uid": 5
         }
       }
     ],
@@ -175,6 +209,6 @@
       }
     },
     "zIndex": 3,
-    "uid": 2
+    "uid": 3
   }
 ]

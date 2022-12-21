@@ -7,6 +7,10 @@ import org.joml.Vector3f;
 public class Camera {
     private Matrix4f projectionMatrix, viewMatrix, inverseProjection, inverseView;
     public Vector2f position;
+    /**
+     * Must match the screen resolution aspect ratio (here, 1.7777... beacuse 1920/1080 = 40/22.5)
+     */
+    private Vector2f projectionSize = new Vector2f(32.0f * 40.0f, 32.0f * 22.5f);
 
     public Camera(Vector2f position) {
         this.position = position;
@@ -19,7 +23,7 @@ public class Camera {
 
     public void adjustProjection() {
         projectionMatrix.identity();
-        projectionMatrix.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 22.5f, 0.0f, 100.0f);
+        projectionMatrix.ortho(0.0f, projectionSize.x, 0.0f, projectionSize.y, 0.0f, 100.0f);
         projectionMatrix.invert(inverseProjection);
     }
 
@@ -60,5 +64,10 @@ public class Camera {
 
     public void setPosition(Vector2f position) {
         this.position = position;
+    }
+
+
+    public Vector2f getProjectionSize() {
+        return this.projectionSize;
     }
 }
