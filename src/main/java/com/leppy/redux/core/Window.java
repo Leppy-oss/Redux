@@ -12,7 +12,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
+import static com.leppy.redux.util.Constants.*;
 
+/**
+ * Super simple abstraction for GLFW window functionality. <br>
+ * The actual GLFW code for viewports, setting callbacks, setting flags, clearing buffers, etc. is mostly in {@link com.leppy.redux.engine.ReduxEngine}
+ */
 public class Window {
     public static class Properties {
         private int width;
@@ -33,8 +38,8 @@ public class Window {
     private String name;
     public RGBFWrapper color;
 
-    protected static final int DEFAULT_WIDTH = 1920;
-    protected static final int DEFAULT_HEIGHT = 1080;
+    protected static final int DEFAULT_WIDTH = WINDOW_WIDTH;
+    protected static final int DEFAULT_HEIGHT = WINDOW_HEIGHT;
     protected static final String DEFAULT_NAME = "Redux Window";
     protected static final RGBFWrapper DEFAULT_COLOR = new RGBFWrapper(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -84,6 +89,7 @@ public class Window {
         glfwDefaultWindowHints(); // optional, the current window hints are already the default
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
+        glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 
         // Create the window
         this.handle = glfwCreateWindow(this.width, this.height, this.name, NULL, NULL);

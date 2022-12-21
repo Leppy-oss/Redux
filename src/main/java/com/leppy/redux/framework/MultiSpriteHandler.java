@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Deprecated
+/**
+ * Doesn't work with new rendering, sprite system, components, etc.
+ */
 public class MultiSpriteHandler {
     private List<Sprite> sprites = new ArrayList<>();
 

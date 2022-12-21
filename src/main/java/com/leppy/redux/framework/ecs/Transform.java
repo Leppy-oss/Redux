@@ -2,6 +2,9 @@ package com.leppy.redux.framework.ecs;
 
 import org.joml.Vector2f;
 
+/**
+ * De facto component describing the position and scale of a {@link com.leppy.redux.framework.ecs.GameObject}
+ */
 public class Transform {
 
     public Vector2f position;

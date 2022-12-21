@@ -1,4 +1,4 @@
-package com.leppy.redux.framework;
+package com.leppy.redux.framework.ecs.components;
 
 import com.leppy.redux.engine.ReduxEngine;
 import com.leppy.redux.framework.ecs.components.Component;

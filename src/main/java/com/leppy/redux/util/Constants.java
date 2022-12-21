@@ -10,4 +10,8 @@ public class Constants {
     public static final int UI_TILE_HEIGHT = (int) (((double) (TILE_HEIGHT)) * UI_TILE_MULT);
     public static final int GRID_WIDTH = UI_TILE_WIDTH;
     public static final int GRID_HEIGHT = UI_TILE_HEIGHT;
+    public static final String glslVersion = "#version 300 es"; // from basic.glsl, default.glsl, etc.
+
+    public static final int WINDOW_WIDTH = 1920;
+    public static final int WINDOW_HEIGHT = 1080;
 }

@@ -25,7 +25,7 @@ public class Framebuffer {
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
             assert false : "Error: Framebuffer is not complete";
         }
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0); // bind the default framebuffer
     }
 
     public void bind() {

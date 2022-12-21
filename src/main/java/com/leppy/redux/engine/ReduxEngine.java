@@ -13,6 +13,7 @@ import imgui.flag.ImGuiConfigFlags;
 import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
 
+import static com.leppy.redux.util.Constants.*;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -25,8 +26,6 @@ public class ReduxEngine {
     private Scene scene;
     private double dt; // Delta time
     private double prevTime;
-
-    protected static final String glslVersion = "#version 300 es"; // from basic.glsl, default.glsl, etc.
     private ImGuiLayer imguilayer;
     private final ImageParser logoIcon = ImageParser.load_image("assets/images/branding/redux-logo.png");
     private Framebuffer framebuffer;
@@ -90,7 +89,9 @@ public class ReduxEngine {
         initImGui();
 
         get().imguilayer = new ImGuiLayer();
-        get().framebuffer = new Framebuffer(3840, 2160);
+        get().framebuffer = new Framebuffer(Window.getWidth(), Window.getHeight());
+        glViewport(0, 0, Window.getWidth(), Window.getHeight());
+
         ReduxEngine.changeScene(new GameScene());
     }
 
@@ -99,20 +100,19 @@ public class ReduxEngine {
      */
     public static void render() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+        get().framebuffer.bind();
 
         Window.get().clearColor(Window.get().color); // Paint background
-        glClear(GL_COLOR_BUFFER_BIT);
 
-        //get().framebuffer.bind();
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
         DebugDraw.beginFrame();
         DebugDraw.draw();
 
         get().scene.update(get().dt);
 
-        get().framebuffer.unbind();
-
-        get().imguilayer.update(get().scene); // must place this after scene updating
+        get().framebuffer.unbind(); // The framebuffer MUST be unbound before the imgui viewport is updated aaaaaa
+        get().imguilayer.update(get().scene);
 
         glfwSwapBuffers(Window.getHandle()); // swap the color buffers
     }
@@ -139,5 +139,14 @@ public class ReduxEngine {
 
     public static Scene getScene() {
         return get().scene;
+    }
+
+
+    public static Framebuffer getFramebuffer() {
+        return get().framebuffer;
+    }
+
+    public static float getTargetAspectRatio() {
+        return 16.0f / 9.0f;
     }
 }

@@ -9,6 +9,7 @@ import com.leppy.redux.framework.ecs.components.*;
 import com.leppy.redux.framework.render.DebugDraw;
 import com.leppy.redux.util.*;
 import imgui.*;
+import imgui.flag.ImGuiConfigFlags;
 import org.joml.*;
 
 import java.lang.Math;
@@ -56,27 +57,30 @@ public class GameScene extends Scene {
         this.addGameObjectToScene(gameIntrinsics);
 
         this.camera = new Camera(new Vector2f(0, 0));
+
         if (loaded) {
-            this.activeGameObject = gameObjects.get(1);
+            if (gameObjects.size() > 2) {
+                this.activeGameObject = gameObjects.get(2);
+            }
             return;
         }
 
+        /*
         testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
         testPlayer.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(testPlayer);
-        this.activeGameObject = testPlayer;
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
                 new Vector2f(256, 256)), 2);
 
-        obj1.addComponent(new SpriteRenderer(new Vector4f(1, 0, 0, 1)));
+        this.activeGameObject = obj1;
+
+        obj1.addComponent(new SpriteRenderer(new Vector4f(0.5f, 1, 0.5f, 1)));
         obj1.addComponent(new Rigidbody());
 
-        /*
         obj1.addComponent(new SpriteRenderer(new Sprite(
                 AssetPool.getTexture("assets/images/blendImage1.png")
         )));
-        */
 
         GameObject obj2 = new GameObject("Object 2",
                 new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 3);
@@ -85,6 +89,7 @@ public class GameScene extends Scene {
         )));
         this.addGameObjectToScene(obj1);
         this.addGameObjectToScene(obj2);
+        */
 
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -135,9 +140,20 @@ public class GameScene extends Scene {
 
         AssetPool.addSpritesheet("64x-tiles",
                 new Spritesheet(AssetPool.getTexture("assets/images/td/Tilesheet/towerDefense_tilesheet.png"),
-                        64, 64, 299, 0));
+                        64, 64, 20, 0));
 
         AssetPool.getTexture("assets/images/blendImage2.png");
+
+        // Ensure that each GameObject has its sprite loaded
+        for (GameObject g : gameObjects) {
+            if (g.getComponent(SpriteRenderer.class) != null) {
+                SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
+                if (spr.getTexture() != null) {
+                    spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilepath()));
+                }
+            }
+        }
+
         sprites = AssetPool.getSpritesheet("run-spritesheet");
         tiles = AssetPool.getSpritesheet("64x-tiles");
     }
@@ -146,8 +162,8 @@ public class GameScene extends Scene {
         float x = ((float) Math.sin(t) * 200.0f) + 600;
         float y = ((float) Math.cos(t) * 200.0f) + 400;
         t += 0.05f;
-        DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(0, 0, 1));
-        DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(0, 1, 0), 1);
+        DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(0, 0, 1), 10);
+        DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(0, 1, 0), 10);
         // System.out.println("FPS: " + (1.0f / dt));
 
         for (GameObject go : this.gameObjects) {
@@ -161,6 +177,7 @@ public class GameScene extends Scene {
             gameIntrinsics.getComponent(MouseControls.class).pickupObject(object);
         }
 
+        /*
         spriteFlipTimeLeft -= dt;
         if (spriteFlipTimeLeft <= 0) {
             spriteFlipTimeLeft = spriteFlipTime;
@@ -169,6 +186,7 @@ public class GameScene extends Scene {
         }
         // this.activeGameObject.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
         // this.activeGameObject.transform.position.x += 2f;
+        */
 
         this.renderer.render();
     }
