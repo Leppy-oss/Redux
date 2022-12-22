@@ -64,7 +64,7 @@ public class ImGuiLayer {
         gameWindow = new GameWindow();
         // this.easyColorTheme(color_for_text, color_for_head, color_for_area, color_for_body, color_for_pops);
         // this.sonicTheme();
-        this.embraceTheDarkness();
+        this.teakStyle();
 
         this.imGuiGl3.init(glslVersion);
     }
@@ -99,6 +99,123 @@ public class ImGuiLayer {
         */
         this.imGuiGl3.renderDrawData(ImGui.getDrawData());
         ImGui.endFrame();
+    }
+    
+    public void teakStyle() {
+        ImGuiStyle style = ImGui.getStyle();
+
+        style.setWindowPadding(15, 15);
+        style.setWindowRounding(5.0f);
+        style.setFramePadding(5, 5);
+        style.setFrameRounding(4.0f);
+        style.setItemSpacing(12, 8);
+        style.setItemInnerSpacing(8, 6);
+        style.setIndentSpacing(25.0f);
+        style.setScrollbarSize(15.0f);
+        style.setScrollbarRounding(9.0f);
+        style.setGrabMinSize(5.0f);
+        style.setGrabRounding(3.0f);
+
+        style.setColor(Text, 0.80f, 0.80f, 0.83f, 1.00f);
+        style.setColor(TextDisabled, 0.24f, 0.23f, 0.29f, 1.00f);
+        style.setColor(WindowBg, 0.06f, 0.05f, 0.07f, 0.5f);
+//        style.setColor(ChildWindowBg, 0.07f, 0.07f, 0.09f, 1.00f);
+        style.setColor(PopupBg, 0.07f, 0.07f, 0.09f, 1.00f);
+        style.setColor(Border, 0.80f, 0.80f, 0.83f, 0.88f);
+        style.setColor(BorderShadow, 0.92f, 0.91f, 0.88f, 0.00f);
+        style.setColor(FrameBg, 0.10f, 0.09f, 0.12f, 1.00f);
+        style.setColor(FrameBgHovered, 0.24f, 0.23f, 0.29f, 1.00f);
+        style.setColor(FrameBgActive, 0.56f, 0.56f, 0.58f, 1.00f);
+        style.setColor(TitleBg, 0.10f, 0.09f, 0.12f, 1.00f);
+        style.setColor(TitleBgCollapsed, 1.00f, 0.98f, 0.95f, 0.75f);
+        style.setColor(TitleBgActive, 0.07f, 0.07f, 0.09f, 1.00f);
+        style.setColor(MenuBarBg, 0.10f, 0.09f, 0.12f, 1.00f);
+        style.setColor(ScrollbarBg, 0.10f, 0.09f, 0.12f, 1.00f);
+        style.setColor(ScrollbarGrab, 0.80f, 0.80f, 0.83f, 0.31f);
+        style.setColor(ScrollbarGrabHovered, 0.56f, 0.56f, 0.58f, 1.00f);
+        style.setColor(ScrollbarGrabActive, 0.06f, 0.05f, 0.07f, 1.00f);
+//        style.setColor(ComboBg, 0.19f, 0.18f, 0.21f, 1.00f);
+        style.setColor(CheckMark, 0.80f, 0.80f, 0.83f, 0.31f);
+        style.setColor(SliderGrab, 0.80f, 0.80f, 0.83f, 0.31f);
+        style.setColor(SliderGrabActive, 0.06f, 0.05f, 0.07f, 1.00f);
+        style.setColor(Button, 0.10f, 0.09f, 0.12f, 1.00f);
+        style.setColor(ButtonHovered, 0.24f, 0.23f, 0.29f, 1.00f);
+        style.setColor(ButtonActive, 0.56f, 0.56f, 0.58f, 1.00f);
+        style.setColor(Header, 0.10f, 0.09f, 0.12f, 1.00f);
+        style.setColor(HeaderHovered, 0.56f, 0.56f, 0.58f, 1.00f);
+        style.setColor(HeaderActive, 0.06f, 0.05f, 0.07f, 1.00f);
+//        style.setColor(Column, 0.56f, 0.56f, 0.58f, 1.00f);
+//        style.setColor(ColumnHovered, 0.24f, 0.23f, 0.29f, 1.00f);
+//        style.setColor(ColumnActive, 0.56f, 0.56f, 0.58f, 1.00f);
+        style.setColor(ResizeGrip, 0.00f, 0.00f, 0.00f, 0.00f);
+        style.setColor(ResizeGripHovered, 0.56f, 0.56f, 0.58f, 1.00f);
+        style.setColor(ResizeGripActive, 0.06f, 0.05f, 0.07f, 1.00f);
+//        style.setColor(CloseButton, 0.40f, 0.39f, 0.38f, 0.16f);
+//        style.setColor(CloseButtonHovered, 0.40f, 0.39f, 0.38f, 0.39f);
+//        style.setColor(CloseButtonActive, 0.40f, 0.39f, 0.38f, 1.00f);
+        style.setColor(PlotLines, 0.40f, 0.39f, 0.38f, 0.63f);
+        style.setColor(PlotLinesHovered, 0.25f, 1.00f, 0.00f, 1.00f);
+        style.setColor(PlotHistogram, 0.40f, 0.39f, 0.38f, 0.63f);
+        style.setColor(PlotHistogramHovered, 0.25f, 1.00f, 0.00f, 1.00f);
+        style.setColor(TextSelectedBg, 0.25f, 1.00f, 0.00f, 0.43f);
+        style.setColor(Tab, 13.0f / 255.0f, 18.0f / 255.0f, 0.1f, 0.43f);
+        style.setColor(TabActive, 13.0f / 255.0f, 18.0f / 255.0f, 0.1f, 0.43f);
+        style.setColor(TabUnfocusedActive, 13.0f / 255.0f, 18.0f / 255.0f, 0.1f, 0.43f);
+        style.setColor(SeparatorActive, 13.0f / 255.0f, 18.0f / 255.0f, 0.1f, 0.43f);
+        style.setColor(SeparatorHovered, 18.0f / 255.0f, 23.0f / 255.0f, 0.1f, 0.43f);
+        style.setColor(TabHovered, 18.0f / 255.0f, 23.0f / 255.0f, 0.1f, 0.43f);
+        // style.setColor(Tab, 18.0f, 23.0f, 0255.0f, 0.43f);
+//        style.setColor(ModalWindowDarkening, 1.00f, 0.98f, 0.95f, 0.73f);
+    }
+
+    public void pacomeStyle() {
+        ImGuiStyle style = ImGui.getStyle();
+
+        style.setAlpha(1.0f);
+        style.setFrameRounding(3.0f);
+        style.setColor(Text, 0.00f, 0.00f, 0.00f, 1.00f);
+        style.setColor(TextDisabled, 0.60f, 0.60f, 0.60f, 1.00f);
+        style.setColor(WindowBg, 0.94f, 0.94f, 0.94f, 0.94f);
+//        style.setColor(ChildWindowBg, 0.00f, 0.00f, 0.00f, 0.00f);
+        style.setColor(PopupBg, 1.00f, 1.00f, 1.00f, 0.94f);
+        style.setColor(Border, 0.00f, 0.00f, 0.00f, 0.39f);
+        style.setColor(BorderShadow, 1.00f, 1.00f, 1.00f, 0.10f);
+        style.setColor(FrameBg, 1.00f, 1.00f, 1.00f, 0.94f);
+        style.setColor(FrameBgHovered, 0.26f, 0.59f, 0.98f, 0.40f);
+        style.setColor(FrameBgActive, 0.26f, 0.59f, 0.98f, 0.67f);
+        style.setColor(TitleBg, 0.96f, 0.96f, 0.96f, 1.00f);
+        style.setColor(TitleBgCollapsed, 1.00f, 1.00f, 1.00f, 0.51f);
+        style.setColor(TitleBgActive, 0.82f, 0.82f, 0.82f, 1.00f);
+        style.setColor(MenuBarBg, 0.86f, 0.86f, 0.86f, 1.00f);
+        style.setColor(ScrollbarBg, 0.98f, 0.98f, 0.98f, 0.53f);
+        style.setColor(ScrollbarGrab, 0.69f, 0.69f, 0.69f, 1.00f);
+        style.setColor(ScrollbarGrabHovered, 0.59f, 0.59f, 0.59f, 1.00f);
+        style.setColor(ScrollbarGrabActive, 0.49f, 0.49f, 0.49f, 1.00f);
+//        style.setColor(ComboBg, 0.86f, 0.86f, 0.86f, 0.99f);
+        style.setColor(CheckMark, 0.26f, 0.59f, 0.98f, 1.00f);
+        style.setColor(SliderGrab, 0.24f, 0.52f, 0.88f, 1.00f);
+        style.setColor(SliderGrabActive, 0.26f, 0.59f, 0.98f, 1.00f);
+        style.setColor(Button, 0.26f, 0.59f, 0.98f, 0.40f);
+        style.setColor(ButtonHovered, 0.26f, 0.59f, 0.98f, 1.00f);
+        style.setColor(ButtonActive, 0.06f, 0.53f, 0.98f, 1.00f);
+        style.setColor(Header, 0.26f, 0.59f, 0.98f, 0.31f);
+        style.setColor(HeaderHovered, 0.26f, 0.59f, 0.98f, 0.80f);
+        style.setColor(HeaderActive, 0.26f, 0.59f, 0.98f, 1.00f);
+//        style.setColor(Column, 0.39f, 0.39f, 0.39f, 1.00f);
+//        style.setColor(ColumnHovered, 0.26f, 0.59f, 0.98f, 0.78f);
+//        style.setColor(ColumnActive, 0.26f, 0.59f, 0.98f, 1.00f);
+        style.setColor(ResizeGrip, 1.00f, 1.00f, 1.00f, 0.50f);
+        style.setColor(ResizeGripHovered, 0.26f, 0.59f, 0.98f, 0.67f);
+        style.setColor(ResizeGripActive, 0.26f, 0.59f, 0.98f, 0.95f);
+//        style.setColor(CloseButton, 0.59f, 0.59f, 0.59f, 0.50f);
+//        style.setColor(CloseButtonHovered, 0.98f, 0.39f, 0.36f, 1.00f);
+//        style.setColor(CloseButtonActive, 0.98f, 0.39f, 0.36f, 1.00f);
+        style.setColor(PlotLines, 0.39f, 0.39f, 0.39f, 1.00f);
+        style.setColor(PlotLinesHovered, 1.00f, 0.43f, 0.35f, 1.00f);
+        style.setColor(PlotHistogram, 0.90f, 0.70f, 0.00f, 1.00f);
+        style.setColor(PlotHistogramHovered, 1.00f, 0.60f, 0.00f, 1.00f);
+        style.setColor(TextSelectedBg, 0.26f, 0.59f, 0.98f, 0.35f);
+//        style.setColor(ModalWindowDarkening], 0.20f, 0.20f, 0.20f, 0.35f);
     }
 
     public void easyColorTheme(Vector3f color_for_text, Vector3f color_for_head, Vector3f color_for_area, Vector3f color_for_body, Vector3f color_for_pops) {

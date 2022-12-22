@@ -168,6 +168,6 @@ public class ReduxEngine {
     }
 
     public static float getTargetAspectRatio() {
-        return 16.0f / 9.0f;
+        return (float) Window.getWidth() / (float) Window.getHeight();
     }
 }

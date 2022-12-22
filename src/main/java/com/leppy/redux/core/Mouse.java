@@ -47,8 +47,8 @@ public class Mouse {
     }
 
     public void endFrame() {
-        this.sX = 0;
-        this.sY = 0;
+        this.sX = 0.0;
+        this.sY = 0.0;
         this.lX = this.cX;
         this.lY = this.cY;
     }

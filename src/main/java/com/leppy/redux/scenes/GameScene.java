@@ -9,11 +9,13 @@ import com.leppy.redux.framework.ecs.components.*;
 import com.leppy.redux.framework.render.DebugDraw;
 import com.leppy.redux.util.*;
 import imgui.*;
+import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiConfigFlags;
 import org.joml.*;
 
 import java.lang.Math;
 
+import static imgui.flag.ImGuiCol.Text;
 import static org.lwjgl.glfw.GLFW.*;
 import static com.leppy.redux.util.Constants.*;
 
@@ -51,12 +53,13 @@ public class GameScene extends Scene {
     public void init() {
         this.loadResources();
 
+        this.camera = new Camera(new Vector2f(-250, 0));
+
         this.gameIntrinsics = new GameObject("Game Intrinsics", new Transform(new Vector2f()), 0);
         this.gameIntrinsics.addComponent(new MouseControls());
         this.gameIntrinsics.addComponent(new GridLines());
+        this.gameIntrinsics.addComponent(new EditorCamera(camera));
         this.addGameObjectToScene(gameIntrinsics);
-
-        this.camera = new Camera(new Vector2f(0, 0));
 
         /*
         testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
@@ -94,6 +97,7 @@ public class GameScene extends Scene {
     @Override
     public void update(double dt) {
         this.dt = dt;
+
         this.handleControls();
         this.handleState();
         this.draw();
@@ -102,9 +106,7 @@ public class GameScene extends Scene {
     public void handleControls() {
         if (state != STATE.TRANSITIONING && Input.keyboard().wasJustPressed(GLFW_KEY_SPACE)) state = STATE.TRANSITIONING;
         if (Input.wasJustPressed(GLFW_KEY_ESCAPE)) ReduxEngine.quit();
-        if (Input.wasJustPressed(GLFW_KEY_F)) camera.setPosition(new Vector2f(testPlayer.transform.position.x, testPlayer.transform.position.y));
-        else if (Input.wasJustPressed(GLFW_KEY_E)) camera.setPosition(new Vector2f());
-        camera.offsetPosition((float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.HORIZONTAL_AXIS)), (float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.VERTICAL_AXIS)));
+        camera.position.add((float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.HORIZONTAL_AXIS)), (float) (dt * 1000.0f * Input.keyboard().getAxis(Keyboard.VERTICAL_AXIS)));
     }
 
     public void handleState() {
@@ -158,6 +160,7 @@ public class GameScene extends Scene {
         DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(0, 0, 1), 10);
         DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(0, 1, 0), 10);
         // System.out.println("FPS: " + (1.0f / dt));
+        this.camera.adjustProjection(); // update camera intrinsics based on new zoom, orthography, etc.
 
         for (GameObject go : this.gameObjects) {
             go.update((float) dt);
@@ -191,10 +194,13 @@ public class GameScene extends Scene {
 
     @Override
     public void imgui() {
+        ImGui.showDemoWindow();
+
+        ImGui.pushStyleColor(Text, 1.0f, 1.0f, 0.0f, 1.00f);
         ImGui.begin("Map Editor");
+        ImGui.popStyleColor(1);
 
         ImGui.text("Standard Tiles");
-        ImGui.showDemoWindow();
 
         if (ImGui.button("Click For More Tiles")) {
             showText = true;

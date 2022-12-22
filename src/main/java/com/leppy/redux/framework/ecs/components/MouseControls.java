@@ -60,6 +60,7 @@ public class MouseControls extends Component {
         if (holdingObject != null) {
             holdingObject.transform.position.x = Input.getOrthoX();
             holdingObject.transform.position.y = Input.getOrthoY();
+            // System.out.println(Input.getOrthoX() + ", " + Input.getOrthoY());
             holdingObject.transform.position.x = (int)(holdingObject.transform.position.x / GRID_WIDTH) * GRID_WIDTH;
             holdingObject.transform.position.y = (int)(holdingObject.transform.position.y / GRID_HEIGHT) * GRID_HEIGHT;
             if (((holdingObject.transform.position.x != oldPosX) || (holdingObject.transform.position.y != oldPosY)) && Input.isDragging()) {
