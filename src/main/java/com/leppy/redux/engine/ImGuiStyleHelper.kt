@@ -8,20 +8,21 @@ import org.joml.Vector3f
 class ImGuiStyleHelper(private var style: ImGuiStyle) {
     fun teakStyle() {
         style.setWindowPadding(15f, 15f)
-        style.setWindowRounding(5.0f)
+        style.windowRounding = 5.0f
         style.setFramePadding(5f, 5f)
-        style.setFrameRounding(4.0f)
+        style.frameRounding = 4.0f
         style.setItemSpacing(12f, 8f)
         style.setItemInnerSpacing(8f, 6f)
-        style.setIndentSpacing(25.0f)
-        style.setScrollbarSize(15.0f)
-        style.setScrollbarRounding(9.0f)
-        style.setGrabMinSize(5.0f)
-        style.setGrabRounding(3.0f)
+        style.indentSpacing = 25.0f
+        style.scrollbarSize = 15.0f
+        style.scrollbarRounding = 9.0f
+        style.grabMinSize = 5.0f
+        style.grabRounding = 3.0f
 
         style.setColor(Text, 0.80f, 0.80f, 0.83f, 1.00f)
         style.setColor(TextDisabled, 0.24f, 0.23f, 0.29f, 1.00f)
-        style.setColor(WindowBg, 0.06f, 0.05f, 0.07f, 0.5f)
+        // modified from original TEAKS ENGINE theme due to the entire engine being a mash of ImGui windows
+        style.setColor(WindowBg, 0.06f, 0.05f, 0.07f, 1.0f)
 //        style.setColor(ChildWindowBg, 0.07f, 0.07f, 0.09f, 1.00f)
         style.setColor(PopupBg, 0.07f, 0.07f, 0.09f, 1.00f)
         style.setColor(Border, 0.80f, 0.80f, 0.83f, 0.88f)

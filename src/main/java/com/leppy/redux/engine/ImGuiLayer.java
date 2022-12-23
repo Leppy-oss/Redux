@@ -16,14 +16,13 @@ import static imgui.flag.ImGuiConfigFlags.DockingEnable;
 import static imgui.flag.ImGuiCol.*;
 
 public class ImGuiLayer {
-    private ImFont font;
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
     private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
     private GameWindow gameWindow;
     private ImGuiStyleHelper styleHelper;
 
-    private GameWindow gameViewWindow;
-    private PropertiesWindow propertiesWindow;
+    private final GameWindow gameViewWindow;
+    private final PropertiesWindow propertiesWindow;
 
     public ImGuiLayer(PickingTexture pickingTexture) {
         this.gameViewWindow = new GameWindow();
@@ -115,12 +114,10 @@ public class ImGuiLayer {
     }
 
     public static int getStaticWindowFlags() {
-        int windowFlags =
-                ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse |
-                ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove |
-                ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus |
-                ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse;
 
-        return windowFlags;
+        return ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse |
+        ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove |
+        ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus |
+        ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse;
     }
 }

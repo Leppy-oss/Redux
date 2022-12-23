@@ -93,8 +93,7 @@ public class Texture {
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
-        if (!(o instanceof Texture)) return false;
-        Texture oTex = (Texture)o;
+        if (!(o instanceof Texture oTex)) return false;
         return oTex.getWidth() == this.width && oTex.getHeight() == this.height &&
                 oTex.getId() == this.Id &&
                 oTex.getFilepath().equals(this.filepath);

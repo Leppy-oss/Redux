@@ -10,7 +10,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
 public class PropertiesWindow {
     private GameObject activeGameObject = null;
-    private PickingTexture pickingTexture;
+    private final PickingTexture pickingTexture;
 
     public PropertiesWindow(PickingTexture pickingTexture) {
         this.pickingTexture = pickingTexture;
@@ -21,6 +21,7 @@ public class PropertiesWindow {
             int x = (int) Input.mouse().getScreenX();
             int y = (int) Input.mouse().getScreenY();
             int gameObjectId = pickingTexture.readPixel(x, y);
+            System.out.println(x + ", " + y);
             if (currentScene.getGameObject(gameObjectId) != null) activeGameObject = currentScene.getGameObject(gameObjectId);
         }
     }

@@ -30,7 +30,6 @@ public class SpriteRenderer extends Component {
     public SpriteRenderer(Sprite sprite) {
         this.sprite = sprite;
         this.color = new Vector4f(1, 1, 1, 1);
-        this.isDirty = true;
     }
 
     @Override

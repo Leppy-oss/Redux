@@ -25,9 +25,6 @@ public class ImageParser {
             IntBuffer h = stack.mallocInt(1);
 
             image = stbi_load(path, w, h, comp, 4);
-            if (image == null) {
-                // throw new resource_error("Could not load image resources.");
-            }
             width = w.get();
             height = h.get();
         }

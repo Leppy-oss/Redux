@@ -2,6 +2,7 @@ package com.leppy.redux.framework.ecs.components;
 
 import com.leppy.redux.core.Camera;
 import com.leppy.redux.core.Input;
+import com.leppy.redux.util.Constants;
 import org.joml.Vector2f;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -11,18 +12,16 @@ import static org.lwjgl.glfw.GLFW.*;
  * TODO: Create a GameCamera that handles the logic for updating a camera in-game (shouldn't require too much)
  */
 public class EditorCamera extends Component {
-    private float dragDebounce = 0.032f;
-
-    private Camera editorCamera;
+    private final Camera camera;
     private Vector2f clickOrigin;
     private boolean reset = false;
 
     private float lerpTime = 0.0f;
-    private float dragSensitivity = 30.0f;
-    private float scrollSensitivity = 0.1f;
+    private static final float dragSens = 30.0f;
+    private static final float scrollSens = 0.1f;
 
-    public EditorCamera(Camera editorCamera) {
-        this.editorCamera = editorCamera;
+    public EditorCamera(Camera camera) {
+        this.camera = camera;
         this.clickOrigin = new Vector2f();
     }
 
@@ -30,25 +29,20 @@ public class EditorCamera extends Component {
     public void update(float dt) {
         if (Input.mouseJustPressed(GLFW_MOUSE_BUTTON_MIDDLE)) {
             this.clickOrigin = new Vector2f(Input.getOrthoX(), Input.getOrthoY());
-            dragDebounce -= dt;
             return;
         } else if (Input.isMousePressed(GLFW_MOUSE_BUTTON_MIDDLE)) {
             Vector2f mousePos = new Vector2f(Input.getOrthoX(), Input.getOrthoY());
             Vector2f delta = new Vector2f(mousePos).sub(this.clickOrigin);
             // Hopefully the timestep is somewhat fixed?
-            editorCamera.position.sub(delta.mul(dt).mul(dragSensitivity));
+            camera.position.sub(delta.mul(dt).mul(dragSens));
             this.clickOrigin.lerp(mousePos, dt);
         }
 
-        if (dragDebounce <= 0.0f && !Input.isMousePressed(GLFW_MOUSE_BUTTON_MIDDLE)) { // just use mouseJustPressed() instead
-            dragDebounce = 0.1f;
-        }
-
         if (Input.getSY() != 0.0f) {
-            float addValue = (float)Math.pow(Math.abs(Input.getSY() * scrollSensitivity),
-                    1 / editorCamera.getZoom());
+            float addValue = (float)Math.pow(Math.abs(Input.getSY() * scrollSens),
+                    1 / camera.getZoom());
             addValue *= -Math.signum(Input.getSY());
-            editorCamera.addZoom(addValue);
+            camera.addZoom(addValue);
         }
 
         if (Input.isPressed(GLFW_KEY_PERIOD)) {
@@ -56,15 +50,15 @@ public class EditorCamera extends Component {
         }
 
         if (reset) {
-            editorCamera.position.lerp(new Vector2f(), lerpTime);
-            editorCamera.setZoom(this.editorCamera.getZoom() +
-                    ((1.0f - editorCamera.getZoom()) * lerpTime));
+            camera.position.lerp(Constants.CAMERA_ORIGIN, lerpTime);
+            camera.setZoom(this.camera.getZoom() +
+                    ((1.0f - camera.getZoom()) * lerpTime));
             this.lerpTime += 0.1f * dt;
-            if (Math.abs(editorCamera.position.x) <= 5.0f &&
-                    Math.abs(editorCamera.position.y) <= 5.0f) {
+            if (Math.abs(camera.position.x) <= 5.0f &&
+                    Math.abs(camera.position.y) <= 5.0f) {
                 this.lerpTime = 0.0f;
-                editorCamera.position.set(0f, 0f);
-                this.editorCamera.setZoom(1.0f);
+                camera.position.set(0f, 0f);
+                this.camera.setZoom(1.0f);
                 reset = false;
             }
         }

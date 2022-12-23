@@ -32,9 +32,9 @@ public class ForceRegistry {
         }
     }
 
+    // TODO: Fix
     public void zeroForces() {
         for (ForceRegistration fr : registry) {
-            // TODO: IMPLEMENT ME
             //fr.rb.zeroForces();
         }
     }

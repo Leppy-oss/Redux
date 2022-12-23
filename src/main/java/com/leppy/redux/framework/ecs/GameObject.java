@@ -9,8 +9,10 @@ import java.util.List;
 
 @Getter
 public class GameObject {
+    @Setter
     public String name;
-    private List<Component> components;
+
+    private final List<Component> components;
     @Setter
     public Transform transform;
     @Setter
@@ -64,21 +66,15 @@ public class GameObject {
     }
 
     public void update(float dt) {
-        for (int i=0; i < components.size(); i++) {
-            components.get(i).update(dt);
-        }
+        for (Component component : components) component.update(dt);
     }
 
     public void start() {
-        for (int i=0; i < components.size(); i++) {
-            components.get(i).start();
-        }
+        for (Component component : components) component.start();
     }
 
     public void imgui() {
-        for (Component c : components) {
-            c.imgui();
-        }
+        for (Component c : components) c.imgui();
     }
 
     public static void init(int maxId) {

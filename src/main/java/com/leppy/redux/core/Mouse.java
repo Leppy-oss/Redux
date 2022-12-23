@@ -14,19 +14,19 @@ public class Mouse {
     protected double
             sX, sY, // Scroll wheel x, y
             cX, cY, // Cursor x, y
-            lX, lY; // Last x, y
+            lX, lY, // Last x, y
+            dX, dY; // Difference between prev. and curr. cursor positions
 
-    private Button mouseButtons[] = new Button[SIZE]; // left click, middle click, right click
+    private final Button[] mouseButtons = new Button[SIZE]; // left click, middle click, right click
 
-    private Vector2f gameViewportPos = new Vector2f();
-    private Vector2f gameViewportSize = new Vector2f();
+    // TODO: may need to fix some of this using project lombok setters or delegates instead of set() nested within custom setter
+    private final Vector2f gameViewportPos = new Vector2f();
+    private final Vector2f gameViewportSize = new Vector2f();
 
     /**
      * Dragging only works with LMB
      */
     protected boolean isDragging;
-
-    private int buttonDown = 0;
 
     public Mouse() {
         this.reset();
@@ -39,7 +39,6 @@ public class Mouse {
         this.cY = 0.0;
         this.lX = 0.0;
         this.lY = 0.0;
-        this.buttonDown = 0;
         this.isDragging = false;
         for (int i = 0; i < SIZE; i++) mouseButtons[i] = new Button(i);
     }
@@ -52,16 +51,10 @@ public class Mouse {
     public void endFrame() {
         this.sX = 0.0;
         this.sY = 0.0;
+        this.dX = this.lX - this.cX;
+        this.dY = this.lY - this.cY;
         this.lX = this.cX;
         this.lY = this.cY;
-    }
-
-    public double getDx() {
-        return (double) (this.lX - this.cX);
-    }
-
-    public double getDy() {
-        return (double) (this.lY - this.cY);
     }
 
     public boolean isDragging() {

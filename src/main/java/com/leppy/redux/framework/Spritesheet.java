@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spritesheet {
-    private Texture texture;
+    private final Texture texture;
     @Getter @Delegate
-    private List<Sprite> sprites;
+    private final List<Sprite> sprites;
 
     public Spritesheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing) {
         this.sprites = new ArrayList<>();

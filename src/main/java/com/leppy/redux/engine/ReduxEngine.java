@@ -144,7 +144,7 @@ public class ReduxEngine {
         glfwFreeCallbacks(Window.getHandle());
         glfwDestroyWindow(Window.getHandle());
         glfwTerminate();
-        glfwSetErrorCallback(null).free(); // TODO: Add handling for cases where cbfun does not match the register
+        // glfwSetErrorCallback(null).free();
     }
 
     public static void changeScene(Scene newScene) {

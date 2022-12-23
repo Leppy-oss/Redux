@@ -12,10 +12,10 @@ import java.nio.file.*;
 import java.util.*;
 
 public abstract class Scene {
-    protected Renderer renderer = new Renderer();
+    protected final Renderer renderer = new Renderer();
     protected Camera camera;
     private boolean isRunning = false;
-    protected List<GameObject> gameObjects = new ArrayList<>();
+    protected final List<GameObject> gameObjects = new ArrayList<>();
     protected boolean loaded = false;
 
     public Scene() {
@@ -59,18 +59,6 @@ public abstract class Scene {
         return this.camera;
     }
 
-    /*
-    public void sceneImgui() {
-        if (activeGameObject != null) {
-            ImGui.begin("Inspector");
-            activeGameObject.imgui();
-            ImGui.end();
-        }
-
-        imgui();
-    }
-    */
-
     public void imgui() {
 
     }
@@ -109,16 +97,16 @@ public abstract class Scene {
             int maxGoId = -1;
             int maxCompId = -1;
             GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
-            for (int i=0; i < objs.length; i++) {
-                addGameObjectToScene(objs[i]);
+            for (GameObject obj : objs) {
+                addGameObjectToScene(obj);
 
-                for (Component c : objs[i].getComponents()) {
+                for (Component c : obj.getComponents()) {
                     if (c.getUid() > maxCompId) {
                         maxCompId = c.getUid();
                     }
                 }
-                if (objs[i].getUid() > maxGoId) {
-                    maxGoId = objs[i].getUid();
+                if (obj.getUid() > maxGoId) {
+                    maxGoId = obj.getUid();
                 }
             }
 

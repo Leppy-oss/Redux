@@ -19,11 +19,11 @@ import static com.leppy.redux.util.Constants.*;
  * The actual GLFW code for viewports, setting callbacks, setting flags, clearing buffers, etc. is mostly in {@link com.leppy.redux.engine.ReduxEngine}
  */
 public class Window {
-    public static class Properties {
-        private int width;
-        private int height;
-        private String name;
-        private RGBFWrapper color;
+    public final static class Properties {
+        private final int width;
+        private final int height;
+        private final String name;
+        private final RGBFWrapper color;
 
         public Properties(int width, int height, String name, RGBFWrapper color) {
             this.width = width;
@@ -63,9 +63,6 @@ public class Window {
     }
 
     @Deprecated
-    /**
-     * bad
-     */
     public void run() {
         System.out.println("Redux framework with LWJGL version " + Version.getVersion() + " is now running");
         this.init();
@@ -108,6 +105,7 @@ public class Window {
             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
             // Center the window
+            assert vidmode != null;
             glfwSetWindowPos(
                     this.handle,
                     (vidmode.width() - pWidth.get(0)) / 2,

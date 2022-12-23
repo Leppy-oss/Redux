@@ -8,14 +8,14 @@ import org.joml.Vector3f;
 
 public class Camera {
     @Getter
-    private Matrix4f projectionMatrix, inverseProjection, inverseView;
+    private final Matrix4f projectionMatrix, inverseProjection, inverseView;
 
-    private Matrix4f viewMatrix; // declare separately to avoid lombok warning
+    private final Matrix4f viewMatrix; // declare separately to avoid lombok warning
 
     @Getter @Setter
     public Vector2f position;
 
-    @Getter
+    @Getter @Setter
     private Vector2f projectionSize = new Vector2f(32.0f * 40.0f, 32.0f * 22.5f);
 
     @Getter @Setter

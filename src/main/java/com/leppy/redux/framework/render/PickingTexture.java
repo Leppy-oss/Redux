@@ -11,9 +11,7 @@ public class PickingTexture {
     private int depthTexture;
 
     public PickingTexture(int width, int height) {
-        if (!init(width, height)) {
-            assert false : "Error initializing picking texture";
-        }
+        assert init(width, height) : "Error initializing picking texture";
     }
 
     public boolean init(int width, int height) {
@@ -69,7 +67,7 @@ public class PickingTexture {
         glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
         glReadBuffer(GL_COLOR_ATTACHMENT0);
 
-        float pixels[] = new float[3];
+        float[] pixels = new float[3];
         glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixels);
 
         return (int)(pixels[0]) - 1;

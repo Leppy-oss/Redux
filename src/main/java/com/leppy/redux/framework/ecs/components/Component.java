@@ -35,7 +35,7 @@ public abstract class Component {
                     field.setAccessible(true);
                 }
 
-                Class type = field.getType();
+                Class<?> type = field.getType();
                 Object value = field.get(this);
                 String name = field.getName();
 

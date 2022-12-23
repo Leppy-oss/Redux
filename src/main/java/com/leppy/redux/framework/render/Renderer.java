@@ -6,8 +6,8 @@ import com.leppy.redux.framework.ecs.components.*;
 import java.util.*;
 
 public class Renderer {
-    private final int MAX_BATCH_SIZE = 1000;
-    private List<RenderBatch> batches;
+    private static final int MAX_BATCH_SIZE = 1000;
+    private final List<RenderBatch> batches;
     private static Shader currentShader;
 
     public Renderer() {

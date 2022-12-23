@@ -4,42 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiStyleHelper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lombok.config" afterDir="false" />
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="integrated kotlin features and configuration; project lombok to RADICALLY reduce boilerplate getters/setters/constructors/delegated functions; refactored dependencies and naming">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Keyboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiStyleHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiStyleHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/MultiSpriteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/MultiSpriteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Prefabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Prefabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/PropertiesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/PropertiesWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Spritesheet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Component.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/EditorCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/EditorCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/GridLines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/GridLines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/MouseControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/FontRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/FontRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/Rigidbody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/SpriteRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/DebugDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/DebugDraw.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Framebuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Framebuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Line2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Line2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/PickingTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/PickingTexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/RenderBatch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Shader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/IntersectionDetector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/IntersectionDetector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/forces/ForceRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/forces/ForceRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Collider2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Collider2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/AssetPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/AssetPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/ImageParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/ImageParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/JMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/JMath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/RGBFWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/RGBFWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/Time.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671680550004</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="integrated kotlin features and configuration; project lombok to RADICALLY reduce boilerplate getters/setters/constructors/delegated functions; refactored dependencies and naming">
+      <created>1671759016676</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1671759016677</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -296,6 +306,7 @@
     <MESSAGE value="framebuffering, viewports, imgui themes, ruda-bold font, and more added!" />
     <MESSAGE value="added object picking, physics2d, and changed GameWindow to be instance-based rather than global/static" />
     <MESSAGE value="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs" />
-    <option name="LAST_COMMIT_MESSAGE" value="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs" />
+    <MESSAGE value="integrated kotlin features and configuration; project lombok to RADICALLY reduce boilerplate getters/setters/constructors/delegated functions; refactored dependencies and naming" />
+    <option name="LAST_COMMIT_MESSAGE" value="integrated kotlin features and configuration; project lombok to RADICALLY reduce boilerplate getters/setters/constructors/delegated functions; refactored dependencies and naming" />
   </component>
 </project>

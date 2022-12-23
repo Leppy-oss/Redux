@@ -5,12 +5,14 @@ import com.leppy.redux.engine.ReduxEngine;
 import imgui.ImGui;
 import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
+import lombok.Getter;
 import org.joml.Vector2f;
 
 /**
  * Viewport window
  */
 public class GameWindow {
+    @Getter
     private float leftX, rightX, topY, bottomY;
 
     public void imgui() {

@@ -23,7 +23,7 @@ public final class Time {
 
         public final double mult;
 
-        private Resolution(double mult) {
+        Resolution(double mult) {
             this.mult = mult;
         }
     }

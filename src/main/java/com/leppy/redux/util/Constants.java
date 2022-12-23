@@ -1,5 +1,7 @@
 package com.leppy.redux.util;
 
+import org.joml.Vector2f;
+
 public class Constants {
     public static final double UI_TILE_MULT = 1.0;
     /** Dimensions for the tile (TILE_LENGTH x TILE_LENGTH) in px */
@@ -14,4 +16,6 @@ public class Constants {
 
     public static final int WINDOW_WIDTH = 1920;
     public static final int WINDOW_HEIGHT = 1080;
+
+    public static final Vector2f CAMERA_ORIGIN = new Vector2f();
 }

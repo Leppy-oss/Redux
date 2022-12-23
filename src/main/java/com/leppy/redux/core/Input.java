@@ -7,9 +7,9 @@ import static org.lwjgl.glfw.GLFW.*;
  */
 public class Input {
     public static Input instance;
-    private Mouse mouse;
-    private Keyboard keyboard;
-    private long windowHandle;
+    private final Mouse mouse;
+    private final Keyboard keyboard;
+    private final long windowHandle;
 
     /**
      * @param wh window handle

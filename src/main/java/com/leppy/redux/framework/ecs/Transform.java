@@ -33,9 +33,8 @@ public class Transform {
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
-        if (!(o instanceof Transform)) return false;
+        if (!(o instanceof Transform t)) return false;
 
-        Transform t = (Transform)o;
         return t.position.equals(this.position) && t.scale.equals(this.scale);
     }
 }

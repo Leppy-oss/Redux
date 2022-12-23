@@ -18,32 +18,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static com.leppy.redux.util.Constants.*;
 
 public class GameScene extends Scene {
-    private static double FADE_CONST = 5.0;
+    private static final double FADE_CONST = 5.0;
 
     private STATE state = STATE.IDLE;
     private volatile double dt = -1;
-    private GameObject testPlayer;
-    private GameObject obj1;
-    private int spriteIndex = 0;
-    private float spriteFlipTime = 0.1f;
-    private float spriteFlipTimeLeft = 0.0f;
-    private Spritesheet sprites;
     private Spritesheet tiles;
-    private boolean showText = false;
     private GameObject gameIntrinsics;
-
-    transient Vector2f[] texCoords1 = {
-            new Vector2f(0.5f, 0.5f),
-            new Vector2f(0.5f, 0),
-            new Vector2f(0, 0),
-            new Vector2f(0, 0.5f)
-    };
-    transient Vector2f[] texCoords2 = {
-            new Vector2f(1.0f, 1.0f),
-            new Vector2f(1.0f, 0.5f),
-            new Vector2f(0.5f, 0.5f),
-            new Vector2f(0.5f, 1.0f)
-    };
 
     public GameScene() {}
 
@@ -58,32 +38,6 @@ public class GameScene extends Scene {
         this.gameIntrinsics.addComponent(new GridLines());
         this.gameIntrinsics.addComponent(new EditorCamera(camera));
         this.addGameObjectToScene(gameIntrinsics);
-
-        /*
-        testPlayer = new GameObject("Testing Player", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 4);
-        testPlayer.addComponent(new SpriteRenderer(sprites.getSprite(0)));
-        this.addGameObjectToScene(testPlayer);
-
-        obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
-                new Vector2f(256, 256)), 2);
-
-        this.activeGameObject = obj1;
-
-        obj1.addComponent(new SpriteRenderer(new Vector4f(0.5f, 1, 0.5f, 1)));
-        obj1.addComponent(new Rigidbody());
-
-        obj1.addComponent(new SpriteRenderer(new Sprite(
-                AssetPool.getTexture("assets/images/blendImage1.png")
-        )));
-
-        GameObject obj2 = new GameObject("Object 2",
-                new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 3);
-        obj2.addComponent(new SpriteRenderer(new Sprite(
-                AssetPool.getTexture("assets/images/blendImage2.png")
-        )));
-        this.addGameObjectToScene(obj1);
-        this.addGameObjectToScene(obj2);
-        */
 
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -127,13 +81,9 @@ public class GameScene extends Scene {
     private void loadResources() {
         AssetPool.getShader("assets/shaders/basic.glsl");
 
-        AssetPool.addSpritesheet("run-spritesheet",
-                new Spritesheet(AssetPool.getTexture("assets/images/player-spritesheet-run.png"),
-                        32, 38, 6, 0));
-
         AssetPool.addSpritesheet("64x-tiles",
                 new Spritesheet(AssetPool.getTexture("assets/images/td/Tilesheet/towerDefense_tilesheet.png"),
-                        64, 64, 20, 0));
+                        64, 64, 89, 0));
 
         AssetPool.getTexture("assets/images/blendImage2.png");
 
@@ -147,7 +97,6 @@ public class GameScene extends Scene {
             }
         }
 
-        sprites = AssetPool.getSpritesheet("run-spritesheet");
         tiles = AssetPool.getSpritesheet("64x-tiles");
     }
 
@@ -171,17 +120,6 @@ public class GameScene extends Scene {
             gameIntrinsics.getComponent(MouseControls.class).pickupObject(object);
         }
 
-        /*
-        spriteFlipTimeLeft -= dt;
-        if (spriteFlipTimeLeft <= 0) {
-            spriteFlipTimeLeft = spriteFlipTime;
-            spriteIndex++;
-            if (spriteIndex > 5) spriteIndex = 0;
-        }
-        // this.activeGameObject.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
-        // this.activeGameObject.transform.position.x += 2f;
-        */
-
         this.renderer.render();
     }
 
@@ -201,14 +139,7 @@ public class GameScene extends Scene {
         ImGui.text("Standard Tiles");
 
         if (ImGui.button("Click For More Tiles")) {
-            showText = true;
-        }
-
-        if (showText) {
-            ImGui.text("jk i havent put them in yet");
-            if (ImGui.button("Stop Showing \"Extra\" Tiles")) {
-                showText = false;
-            }
+            if (!ImGui.button("Stop Showing \"Extra\" Tiles")) ImGui.text("jk i havent put them in yet");
         }
 
         ImVec2 windowPos = new ImVec2();
