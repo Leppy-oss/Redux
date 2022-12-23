@@ -44,10 +44,10 @@ public class EditorCamera extends Component {
             dragDebounce = 0.1f;
         }
 
-        if (Input.sY() != 0.0f) {
-            float addValue = (float)Math.pow(Math.abs(Input.sY() * scrollSensitivity),
+        if (Input.getSY() != 0.0f) {
+            float addValue = (float)Math.pow(Math.abs(Input.getSY() * scrollSensitivity),
                     1 / editorCamera.getZoom());
-            addValue *= -Math.signum(Input.sY());
+            addValue *= -Math.signum(Input.getSY());
             editorCamera.addZoom(addValue);
         }
 

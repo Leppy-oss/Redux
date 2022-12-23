@@ -1,5 +1,7 @@
 package com.leppy.redux.core;
 
+import lombok.AllArgsConstructor;
+
 /**
  * Syntactic sugar for {@link Button}, functionally identical
  */

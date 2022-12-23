@@ -1,5 +1,18 @@
-apply plugin: 'java'
+buildscript {
+    ext.kotlin_version = '1.8.0-RC2'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+plugins {
+    id "io.freefair.lombok" version "6.6.1"
+}
 apply plugin: 'application'
+apply plugin: 'kotlin'
+apply plugin: 'java'
 
 group 'com.leppy'
 version '1.0-SNAPSHOT'
@@ -9,9 +22,14 @@ repositories {
     maven { url "https://spair.github.io/" }
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 project.ext.lwjglVersion = "3.3.1"
@@ -22,6 +40,7 @@ project.ext.lwjglNatives = "natives-windows"
 project.ext.jomlVersion = "1.10.5"
 project.ext.imguiVersion = "1.86.4"
 project.ext.gsonVersion = "2.10"
+project.ext.lombokVersion = "1.18.24"
 
 dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
@@ -62,6 +81,12 @@ dependencies {
     implementation "io.github.spair:imgui-java-binding:$imguiVersion"
     implementation "io.github.spair:imgui-java-lwjgl3:$imguiVersion"
     implementation "io.github.spair:imgui-java-natives-windows:$imguiVersion"
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
 }
 
 repositories {
@@ -101,4 +126,14 @@ task fatJar(type: Jar) {
 
 artifacts {
     archives fatJar
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

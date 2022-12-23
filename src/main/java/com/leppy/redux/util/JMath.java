@@ -3,7 +3,6 @@ package com.leppy.redux.util;
 import org.joml.Vector2f;
 
 public class JMath {
-
     public static void rotate(Vector2f vec, float angleDeg, Vector2f origin) {
         float x = vec.x - origin.x;
         float y = vec.y - origin.y;

@@ -1,15 +1,18 @@
 package com.leppy.redux.framework;
 
 import com.leppy.redux.util.AssetPool;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
 /**
  * Doesn't work with new rendering, sprite system, components, etc.
  */
+@Deprecated
 public class MultiSpriteHandler {
+    @Getter @Setter
     private List<Sprite> sprites = new ArrayList<>();
 
     public MultiSpriteHandler() {}
@@ -32,10 +35,6 @@ public class MultiSpriteHandler {
             // this is not updated to contain the new width/height metadata required for serialization and use of sprites
             this.sprites.add(new Sprite(AssetPool.getTexture(directory + constPrefix + i + subfix)));
         }
-    }
-
-    public List<Sprite> getSprites() {
-        return this.sprites;
     }
 
     public Sprite getSprite(int index) {

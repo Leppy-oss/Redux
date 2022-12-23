@@ -10,14 +10,14 @@ public class IntersectionDetector2D {
     // Point vs. Primitive Tests
     // ========================================================
     public static boolean pointOnLine(Vector2f point, Line2D line) {
-        float dy = line.getEnd().y - line.getStart().y;
-        float dx = line.getEnd().x - line.getStart().x;
+        float dy = line.getTo().y - line.getFrom().y;
+        float dx = line.getTo().x - line.getFrom().x;
         if (dx == 0f) {
-            return JMath.compare(point.x, line.getStart().x);
+            return JMath.compare(point.x, line.getFrom().x);
         }
         float m = dy / dx;
 
-        float b = line.getEnd().y - (m * line.getEnd().x);
+        float b = line.getTo().y - (m * line.getTo().x);
 
         // Check the line equation
         return point.y == m * point.x + b;
@@ -55,16 +55,16 @@ public class IntersectionDetector2D {
     // Line vs. Primitive Tests
     // ========================================================
     public static boolean lineAndCircle(Line2D line, Circle circle) {
-        if (pointInCircle(line.getStart(), circle) || pointInCircle(line.getEnd(), circle)) {
+        if (pointInCircle(line.getFrom(), circle) || pointInCircle(line.getTo(), circle)) {
             return true;
         }
 
-        Vector2f ab = new Vector2f(line.getEnd()).sub(line.getStart());
+        Vector2f ab = new Vector2f(line.getTo()).sub(line.getFrom());
 
         // Project point (circle position) onto ab (line segment)
         // parameterized position t
         Vector2f circleCenter = circle.getCenter();
-        Vector2f centerToLineStart = new Vector2f(circleCenter).sub(line.getStart());
+        Vector2f centerToLineStart = new Vector2f(circleCenter).sub(line.getFrom());
         float t = centerToLineStart.dot(ab) / ab.dot(ab);
 
         if (t < 0.0f || t > 1.0f) {
@@ -72,25 +72,25 @@ public class IntersectionDetector2D {
         }
 
         // Find the closest point to the line segment
-        Vector2f closestPoint = new Vector2f(line.getStart()).add(ab.mul(t));
+        Vector2f closestPoint = new Vector2f(line.getFrom()).add(ab.mul(t));
 
         return pointInCircle(closestPoint, circle);
     }
 
     public static boolean lineAndAABB(Line2D line, AABB box) {
-        if (pointInAABB(line.getStart(), box) || pointInAABB(line.getEnd(), box)) {
+        if (pointInAABB(line.getFrom(), box) || pointInAABB(line.getTo(), box)) {
             return true;
         }
 
-        Vector2f unitVector = new Vector2f(line.getEnd()).sub(line.getStart());
+        Vector2f unitVector = new Vector2f(line.getTo()).sub(line.getFrom());
         unitVector.normalize();
         unitVector.x = (unitVector.x != 0) ? 1.0f / unitVector.x : 0f;
         unitVector.y = (unitVector.y != 0) ? 1.0f / unitVector.y : 0f;
 
         Vector2f min = box.getMin();
-        min.sub(line.getStart()).mul(unitVector);
+        min.sub(line.getFrom()).mul(unitVector);
         Vector2f max = box.getMax();
-        max.sub(line.getStart()).mul(unitVector);
+        max.sub(line.getFrom()).mul(unitVector);
 
         float tmin = Math.max(Math.min(min.x, max.x), Math.min(min.y, max.y));
         float tmax = Math.min(Math.max(min.x, max.x), Math.max(min.y, max.y));
@@ -105,8 +105,8 @@ public class IntersectionDetector2D {
     public static boolean lineAndBox2D(Line2D line, Box2D box) {
         float theta = -box.getRigidbody().getRotation();
         Vector2f center = box.getRigidbody().getPosition();
-        Vector2f localStart = new Vector2f(line.getStart());
-        Vector2f localEnd = new Vector2f(line.getEnd());
+        Vector2f localStart = new Vector2f(line.getFrom());
+        Vector2f localEnd = new Vector2f(line.getTo());
         JMath.rotate(localStart, theta, center);
         JMath.rotate(localEnd, theta, center);
 

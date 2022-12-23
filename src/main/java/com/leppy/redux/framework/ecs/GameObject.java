@@ -1,17 +1,22 @@
 package com.leppy.redux.framework.ecs;
 
 import com.leppy.redux.framework.ecs.components.Component;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class GameObject {
     public String name;
     private List<Component> components;
+    @Setter
     public Transform transform;
+    @Setter
     private int zIndex;
-
     private static int ID_COUNTER = 0; // keeps track of current UID
+    @Setter
     private int uid = -1;
 
     public GameObject(String name) {
@@ -24,11 +29,7 @@ public class GameObject {
         this.components = new ArrayList<>();
         this.transform = transform;
 
-        this.uid = ID_COUNTER++;
-    }
-
-    public List<Component> getAllComponents() {
-        return this.components;
+        this.setUid(ID_COUNTER++);
     }
 
     public <T extends Component> T getComponent(Class<T> componentClass) {
@@ -74,18 +75,10 @@ public class GameObject {
         }
     }
 
-    public int zIndex() {
-        return this.zIndex;
-    }
-
     public void imgui() {
         for (Component c : components) {
             c.imgui();
         }
-    }
-
-    public int getUid() {
-        return this.uid;
     }
 
     public static void init(int maxId) {

@@ -1,6 +1,8 @@
 package com.leppy.redux.core;
 
 import com.leppy.redux.engine.ReduxEngine;
+import lombok.Getter;
+import lombok.experimental.Delegate;
 import org.joml.*;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -8,6 +10,7 @@ import static org.lwjgl.glfw.GLFW.*;
 public class Mouse {
     public static final int SIZE = 3;
 
+    @Getter
     protected double
             sX, sY, // Scroll wheel x, y
             cX, cY, // Cursor x, y
@@ -53,34 +56,11 @@ public class Mouse {
         this.lY = this.cY;
     }
 
-    public double sX() {
-        return (double) this.sX;
-    }
-
-    public double sY() {
-        return (double) this.sY;
-    }
-
-    public double cX() {
-        return (double) this.cX;
-    }
-
-    public double cY() {
-        return (double) this.cY;
-    }
-    public double lX() {
-        return (double) this.lX;
-    }
-
-    public double lY() {
-        return (double) this.lY;
-    }
-
-    public double dX() {
+    public double getDx() {
         return (double) (this.lX - this.cX);
     }
 
-    public double dY() {
+    public double getDy() {
         return (double) (this.lY - this.cY);
     }
 
@@ -121,19 +101,19 @@ public class Mouse {
     }
 
     public float getScreenX() {
-        float currentX = (float) (this.cX() - this.gameViewportPos.x);
+        float currentX = (float) (this.getCX() - this.gameViewportPos.x);
         currentX = (currentX / this.gameViewportSize.x) * Window.getWidth();
         return currentX;
     }
 
     public float getScreenY() {
-        float currentY = (float) (this.cY() - this.gameViewportPos.y);
+        float currentY = (float) (this.getCY() - this.gameViewportPos.y);
         currentY = Window.getHeight() - ((currentY / this.gameViewportSize.y) * Window.getHeight());
         return currentY;
     }
 
     public float getOrthoX() {
-        float currentX = (float) (this.cX() - this.gameViewportPos.x);
+        float currentX = (float) (this.getCX() - this.gameViewportPos.x);
         currentX = (currentX / this.gameViewportSize.x) * 2.0f - 1.0f;
         Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
 
@@ -147,7 +127,7 @@ public class Mouse {
     }
 
     public float getOrthoY() {
-        float currentY = (float) (this.cY() - this.gameViewportPos.y);
+        float currentY = (float) (this.getCY() - this.gameViewportPos.y);
         currentY = -((currentY / this.gameViewportSize.y) * 2.0f - 1.0f);
         Vector4f tmp = new Vector4f(0, currentY, 0, 1);
 

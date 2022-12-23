@@ -1,5 +1,6 @@
 package com.leppy.redux.framework.render;
 
+import lombok.Getter;
 import org.lwjgl.BufferUtils;
 
 import java.nio.ByteBuffer;
@@ -8,13 +9,14 @@ import java.nio.IntBuffer;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.stb.STBImage.*;
 
+@Getter
 public class Texture {
     private String filepath;
-    private transient int texID;
+    private transient int Id;
     private int width, height;
 
     public Texture() {
-        this.texID = -1;
+        this.Id = -1;
         this.width = -1;
         this.height = -1;
     }
@@ -23,8 +25,8 @@ public class Texture {
         this.filepath = "Generated";
 
         // Generate texture on GPU
-        texID = glGenTextures();
-        glBindTexture(GL_TEXTURE_2D, texID);
+        Id = glGenTextures();
+        glBindTexture(GL_TEXTURE_2D, Id);
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // No longer shall the textures fail to render !
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -38,31 +40,19 @@ public class Texture {
     }
 
     public void bind() {
-        glBindTexture(GL_TEXTURE_2D, texID);
+        glBindTexture(GL_TEXTURE_2D, Id);
     }
 
     public void unbind() {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public String getFilepath() {
-        return this.filepath;
-    }
-
     public void init(String filepath) {
         this.filepath = filepath;
 
         // Generate texture on GPU
-        texID = glGenTextures();
-        glBindTexture(GL_TEXTURE_2D, texID);
+        Id = glGenTextures();
+        glBindTexture(GL_TEXTURE_2D, Id);
 
         // Set texture parameters
         // Repeat image in both directions
@@ -100,17 +90,13 @@ public class Texture {
     }
 
 
-    public int getId() {
-        return texID;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
         if (!(o instanceof Texture)) return false;
         Texture oTex = (Texture)o;
         return oTex.getWidth() == this.width && oTex.getHeight() == this.height &&
-                oTex.getId() == this.texID &&
+                oTex.getId() == this.Id &&
                 oTex.getFilepath().equals(this.filepath);
     }
 }

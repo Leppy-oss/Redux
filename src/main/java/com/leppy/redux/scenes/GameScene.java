@@ -9,8 +9,6 @@ import com.leppy.redux.framework.ecs.components.*;
 import com.leppy.redux.framework.render.DebugDraw;
 import com.leppy.redux.util.*;
 import imgui.*;
-import imgui.flag.ImGuiCol;
-import imgui.flag.ImGuiConfigFlags;
 import org.joml.*;
 
 import java.lang.Math;

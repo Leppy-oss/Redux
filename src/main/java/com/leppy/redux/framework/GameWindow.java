@@ -14,7 +14,7 @@ public class GameWindow {
     private float leftX, rightX, topY, bottomY;
 
     public void imgui() {
-        ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
+        ImGui.begin("Redux", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
 
         ImVec2 windowSize = getLargestSizeForViewport();
         ImVec2 windowPos = getCenteredPositionForViewport(windowSize);
@@ -40,8 +40,8 @@ public class GameWindow {
     }
 
     public boolean getWantCaptureMouse() {
-        return Input.mouse().cX() >= leftX && Input.mouse().cX() <= rightX &&
-                Input.mouse().cY() >= bottomY && Input.mouse().cY() <= topY;
+        return Input.mouse().getCX() >= leftX && Input.mouse().getCX() <= rightX &&
+                Input.mouse().getCY() >= bottomY && Input.mouse().getCY() <= topY;
     }
 
     private ImVec2 getLargestSizeForViewport() {

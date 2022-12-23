@@ -6,7 +6,6 @@ import com.leppy.redux.framework.ecs.*;
 import com.leppy.redux.framework.ecs.components.Component;
 import com.leppy.redux.framework.ecs.components.ComponentDeserializer;
 import com.leppy.redux.framework.render.Renderer;
-import imgui.ImGui;
 
 import java.io.*;
 import java.nio.file.*;
@@ -113,7 +112,7 @@ public abstract class Scene {
             for (int i=0; i < objs.length; i++) {
                 addGameObjectToScene(objs[i]);
 
-                for (Component c : objs[i].getAllComponents()) {
+                for (Component c : objs[i].getComponents()) {
                     if (c.getUid() > maxCompId) {
                         maxCompId = c.getUid();
                     }

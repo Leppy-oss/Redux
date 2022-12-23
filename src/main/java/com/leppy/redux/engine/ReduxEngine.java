@@ -90,7 +90,7 @@ public class ReduxEngine {
 
         get().framebuffer = new Framebuffer(Window.getWidth(), Window.getHeight());
         get().pickingTexture = new PickingTexture(Window.getWidth(), Window.getHeight());
-        get().imguilayer = new ImGuiLayer(Window.getHandle(), get().pickingTexture);
+        get().imguilayer = new ImGuiLayer(get().pickingTexture);
         glViewport(0, 0, Window.getWidth(), Window.getHeight());
 
         ReduxEngine.changeScene(new GameScene());

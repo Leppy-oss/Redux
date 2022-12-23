@@ -1,12 +1,16 @@
 package com.leppy.redux.core;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 import static org.lwjgl.glfw.GLFW.*;
 
+@Accessors(fluent = true)
 public class Button {
-    protected boolean isPressed;
-    protected boolean previouslyPressed;
-    protected boolean wasJustPressed;
-    protected boolean wasJustReleased;
+    @Getter
+    protected boolean isPressed, previouslyPressed, wasJustPressed, wasJustReleased;
+    @Accessors(fluent = false) @Getter @Setter
     protected int code;
 
     public Button(int code) {
@@ -29,29 +33,5 @@ public class Button {
             isPressed = false;
         }
         previouslyPressed = isPressed;
-    }
-
-    public boolean isPressed() {
-        return this.isPressed;
-    }
-
-    public boolean previouslyPressed() {
-        return previouslyPressed;
-    }
-
-    public boolean wasJustPressed() {
-        return wasJustPressed;
-    }
-
-    public boolean wasJustReleased() {
-        return wasJustReleased;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public int getCode() {
-        return this.code;
     }
 }

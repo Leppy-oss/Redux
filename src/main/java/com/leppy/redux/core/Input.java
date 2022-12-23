@@ -102,34 +102,30 @@ public class Input {
         return mouse().getOrthoY();
     }
 
-    public static double sX() {
-        return mouse().sX();
+    public static double getSX() {
+        return mouse().getSX();
     }
 
-    public static double sY() {
-        return mouse().sY();
+    public static double getSY() {
+        return mouse().getSY();
     }
 
-    public static double cX() {
-        return mouse().cX();
+    public static double getCX() {
+        return mouse().getCX();
     }
 
-    public static double cY() {
-        return mouse().cY();
+    public static double getLX() {
+        return mouse().getLX();
     }
 
-    public static double lX() {
-        return mouse().lX();
-    }
-
-    public static double lY() {
-        return mouse().lY();
+    public static double getLY() {
+        return mouse().getLY();
     }
 
     public static void endFrame() {
         mouse().endFrame();
     }
-
+    
     public static boolean isDragging() {
         return mouse().isDragging();
     }

@@ -1,8 +1,11 @@
 package com.leppy.redux.framework.render;
 
+import lombok.Getter;
+
 import static org.lwjgl.opengl.GL30.*;
 
 public class Framebuffer {
+    @Getter
     private int fboID = 0;
     private Texture texture = null;
 
@@ -34,10 +37,6 @@ public class Framebuffer {
 
     public void unbind() {
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    }
-
-    public int getFboID() {
-        return fboID;
     }
 
     public int getTextureId() {

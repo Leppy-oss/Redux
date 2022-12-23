@@ -1,35 +1,21 @@
 package com.leppy.redux.util;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.lwjgl.system.MemoryStack;
-
 import java.nio.*;
-
 import static org.lwjgl.stb.STBImage.stbi_load;
 
 /**
  * Utility class for parsing images from raw bytes
  */
+@AllArgsConstructor
 public class ImageParser {
-    public ByteBuffer getImage() {
-        return image;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
+    @Getter
     private ByteBuffer image;
+    @Getter
     private int width, height;
 
-    ImageParser(int width, int height, ByteBuffer image) {
-        this.image = image;
-        this.height = height;
-        this.width = width;
-    }
     public static ImageParser load_image(String path) {
         ByteBuffer image;
         int width, height;
@@ -45,6 +31,6 @@ public class ImageParser {
             width = w.get();
             height = h.get();
         }
-        return new ImageParser(width, height, image);
+        return new ImageParser(image, width, height);
     }
 }

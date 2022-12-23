@@ -4,18 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="added object picking, physics2d, and changed GameWindow to be instance-based rather than global/static">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/EditorCamera.java" afterDir="false" />
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs">
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiStyleHelper.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lombok.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Key.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ImGuiLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/engine/ReduxEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/MultiSpriteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/MultiSpriteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Prefabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Prefabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/Spritesheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/EditorCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/EditorCamera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/GridLines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/GridLines.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/ecs/components/MouseControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/DebugDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/DebugDraw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Framebuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Framebuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Line2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Line2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/render/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/IntersectionDetector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/IntersectionDetector2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/ImageParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/ImageParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/JMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/JMath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/RGBFWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/util/RGBFWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +75,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -71,22 +96,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/ryan/Documents/redux-framework/libs/imgui-binding-1.86.4.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ryan/Documents/redux-framework/libs/imgui-binding-1.86.4.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ryan\Documents\redux-framework\src\main\java" />
@@ -231,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671664269068</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs">
+      <created>1671680550004</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1671680550004</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,6 +295,7 @@
     <MESSAGE value="refactoring, DebugDrawing improvements (boxes, circles, etc.), wasJustReleased() functions added to the input classes, improved drag-and-drop functionality to include actual hold to draw (mostly working); added JMath.java to compare and rotate Vectors" />
     <MESSAGE value="framebuffering, viewports, imgui themes, ruda-bold font, and more added!" />
     <MESSAGE value="added object picking, physics2d, and changed GameWindow to be instance-based rather than global/static" />
-    <option name="LAST_COMMIT_MESSAGE" value="added object picking, physics2d, and changed GameWindow to be instance-based rather than global/static" />
+    <MESSAGE value="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="made some changes to imgui themes; added lerp to camera for smoother control; fixed scrolling and other inputs" />
   </component>
 </project>

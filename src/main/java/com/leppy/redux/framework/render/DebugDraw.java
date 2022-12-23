@@ -32,7 +32,7 @@ public class DebugDraw {
         // Create the vbo and buffer some memory
         vboID = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glBufferData(GL_ARRAY_BUFFER, vertexArray.length * Float.BYTES, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, (long) vertexArray.length * Float.BYTES, GL_DYNAMIC_DRAW);
 
         // Enable the vertex array attributes
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * Float.BYTES, 0);

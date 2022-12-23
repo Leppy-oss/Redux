@@ -1,6 +1,8 @@
 package com.leppy.redux.framework;
 
 import com.leppy.redux.util.AssetPool;
+import lombok.Getter;
+import lombok.experimental.Delegate;
 import org.joml.Vector2f;
 import com.leppy.redux.framework.render.Texture;
 
@@ -8,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spritesheet {
-
     private Texture texture;
+    @Getter @Delegate
     private List<Sprite> sprites;
 
     public Spritesheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing) {
@@ -43,6 +45,10 @@ public class Spritesheet {
         }
     }
 
+    /**
+     * not yet working
+     */
+    @Deprecated
     public Spritesheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacingX, int spacingY, int leftOffsetX, int topOffsetY, int rightOffsetX, int bottomOffsetY) {
         this.sprites = new ArrayList<>();
 
@@ -75,24 +81,7 @@ public class Spritesheet {
         }
     }
 
-    public Spritesheet(String... sprites) {
-        this.sprites = new ArrayList<>();
-        for (String s : sprites) this.sprites.add(new Sprite(AssetPool.getTexture(s)));
-    }
-
     public Sprite getSprite(int index) {
         return this.sprites.get(index);
-    }
-
-    public int size() {
-        return sprites.size();
-    }
-
-    /**
-     * shorthand for {@link #size()}
-     * @return
-     */
-    public int length() {
-        return this.size();
     }
 }
