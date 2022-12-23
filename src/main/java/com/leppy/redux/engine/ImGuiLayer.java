@@ -9,6 +9,7 @@ import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.type.ImBoolean;
+import lombok.Getter;
 
 import static com.leppy.redux.util.Constants.glslVersion;
 import static imgui.flag.ImGuiConfigFlags.DockingEnable;
@@ -20,6 +21,7 @@ public class ImGuiLayer {
     private ImGuiStyleHelper styleHelper;
 
     private final GameWindow gameViewWindow;
+    @Getter
     private final PropertiesWindow propertiesWindow;
 
     public ImGuiLayer(PickingTexture pickingTexture) {

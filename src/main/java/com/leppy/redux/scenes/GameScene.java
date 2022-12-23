@@ -22,7 +22,7 @@ public class GameScene extends Scene {
 
     private STATE state = STATE.IDLE;
     private volatile double dt = -1;
-    private Spritesheet tiles;
+    private Spritesheet tiles, gizmos;
     private GameObject gameIntrinsics;
 
     public GameScene() {}
@@ -37,6 +37,10 @@ public class GameScene extends Scene {
         this.gameIntrinsics.addComponent(new MouseControls());
         this.gameIntrinsics.addComponent(new GridLines());
         this.gameIntrinsics.addComponent(new EditorCamera(camera));
+        gameIntrinsics.addComponent(new TranslateGizmo(gizmos.getSprite(1),
+                ReduxEngine.getImguilayer().getPropertiesWindow()));
+
+        gameIntrinsics.start();
         this.addGameObjectToScene(gameIntrinsics);
 
         Gson gson = new GsonBuilder()
@@ -85,7 +89,9 @@ public class GameScene extends Scene {
                 new Spritesheet(AssetPool.getTexture("assets/images/td/Tilesheet/towerDefense_tilesheet.png"),
                         64, 64, 89, 0));
 
-        AssetPool.getTexture("assets/images/blendImage2.png");
+        AssetPool.addSpritesheet("gizmos",
+                new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),
+                        24, 48, 2, 0));
 
         // Ensure that each GameObject has its sprite loaded
         for (GameObject g : gameObjects) {
@@ -98,6 +104,7 @@ public class GameScene extends Scene {
         }
 
         tiles = AssetPool.getSpritesheet("64x-tiles");
+        gizmos = AssetPool.getSpritesheet("gizmos");
     }
 
     public void draw() {
@@ -130,6 +137,10 @@ public class GameScene extends Scene {
 
     @Override
     public void imgui() {
+        ImGui.begin("Game Intrinsics");
+        gameIntrinsics.imgui();
+        ImGui.end();
+
         ImGui.showDemoWindow();
 
         ImGui.pushStyleColor(Text, 1.0f, 1.0f, 0.0f, 1.00f);

@@ -162,6 +162,9 @@ public class ReduxEngine {
         return get().scene;
     }
 
+    public static ImGuiLayer getImguilayer() {
+        return get().imguilayer;
+    }
 
     public static Framebuffer getFramebuffer() {
         return get().framebuffer;

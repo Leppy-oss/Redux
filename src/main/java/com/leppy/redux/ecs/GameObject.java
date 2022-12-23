@@ -3,6 +3,7 @@ package com.leppy.redux.ecs;
 import com.leppy.redux.ecs.components.Component;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,8 @@ public class GameObject {
     private static int ID_COUNTER = 0; // keeps track of current UID
     @Setter
     private int uid = -1;
+    @Accessors(fluent = true) @Getter
+    private boolean doSerialization = true;
 
     public GameObject(String name) {
         this(name, new Transform(), 0);
@@ -79,5 +82,10 @@ public class GameObject {
 
     public static void init(int maxId) {
         ID_COUNTER = maxId;
+    }
+
+
+    public void setNoSerialize() {
+        this.doSerialization = false;
     }
 }

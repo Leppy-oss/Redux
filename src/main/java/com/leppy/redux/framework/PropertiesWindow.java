@@ -5,10 +5,12 @@ import com.leppy.redux.ecs.GameObject;
 import com.leppy.redux.render.PickingTexture;
 import com.leppy.redux.scenes.Scene;
 import imgui.ImGui;
+import lombok.Getter;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
 public class PropertiesWindow {
+    @Getter
     private GameObject activeGameObject = null;
     private final PickingTexture pickingTexture;
 

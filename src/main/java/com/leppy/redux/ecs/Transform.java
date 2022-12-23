@@ -10,19 +10,26 @@ import org.joml.Vector2f;
  */
 @Getter @Setter @AllArgsConstructor
 public class Transform {
-    public Vector2f position;
-    public Vector2f scale;
+    public Vector2f position, scale;
+    /**
+     * Rotation in DEGREES
+     */
+    public float rotation;
 
     public Transform() {
-        this(new Vector2f(), new Vector2f());
+        this(new Vector2f(), new Vector2f(), 0.0f);
     }
 
     public Transform(Vector2f position) {
-        this(position, new Vector2f());
+        this(position, new Vector2f(), 0.0f);
+    }
+
+    public Transform(Vector2f position, Vector2f scale) {
+        this(position, scale, 0.0f);
     }
 
     public Transform copy() {
-        return new Transform(new Vector2f(this.position), new Vector2f(this.scale));
+        return new Transform(new Vector2f(this.position), new Vector2f(this.scale), 0.0f);
     }
 
     public void copy(Transform to) {
