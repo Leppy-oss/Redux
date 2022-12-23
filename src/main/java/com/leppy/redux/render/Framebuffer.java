@@ -1,4 +1,4 @@
-package com.leppy.redux.framework.render;
+package com.leppy.redux.render;
 
 import lombok.Getter;
 

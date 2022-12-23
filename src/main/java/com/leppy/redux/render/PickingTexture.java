@@ -1,7 +1,6 @@
-package com.leppy.redux.framework.render;
+package com.leppy.redux.render;
 
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL14.GL_DEPTH_COMPONENT32;
 import static org.lwjgl.opengl.GL30.*;
 import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER;
 
@@ -11,7 +10,9 @@ public class PickingTexture {
     private int depthTexture;
 
     public PickingTexture(int width, int height) {
-        assert init(width, height) : "Error initializing picking texture";
+        if (!init(width, height)) {
+            assert false : "Error initializing picking texture";
+        }
     }
 
     public boolean init(int width, int height) {

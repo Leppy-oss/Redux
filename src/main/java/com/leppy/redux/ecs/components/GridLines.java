@@ -1,8 +1,8 @@
-package com.leppy.redux.framework.ecs.components;
+package com.leppy.redux.ecs.components;
 
 import com.leppy.redux.core.Camera;
 import com.leppy.redux.engine.ReduxEngine;
-import com.leppy.redux.framework.render.DebugDraw;
+import com.leppy.redux.render.DebugDraw;
 import com.leppy.redux.util.Constants;
 import org.joml.Vector2f;
 import org.joml.Vector3f;

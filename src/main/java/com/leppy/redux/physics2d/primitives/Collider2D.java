@@ -1,6 +1,6 @@
 package com.leppy.redux.physics2d.primitives;
 
-import com.leppy.redux.framework.ecs.components.Component;
+import com.leppy.redux.ecs.components.Component;
 import org.joml.Vector2f;
 
 // TODO: Finish

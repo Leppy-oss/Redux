@@ -1,4 +1,4 @@
-package com.leppy.redux.framework.ecs;
+package com.leppy.redux.ecs;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.joml.Vector2f;
 
 /**
- * De facto component describing the position and scale of a {@link com.leppy.redux.framework.ecs.GameObject}
+ * De facto component describing the position and scale of a {@link com.leppy.redux.ecs.GameObject}
  */
 @Getter @Setter @AllArgsConstructor
 public class Transform {

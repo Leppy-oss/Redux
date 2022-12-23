@@ -2,10 +2,10 @@ package com.leppy.redux.scenes;
 
 import com.google.gson.*;
 import com.leppy.redux.core.Camera;
-import com.leppy.redux.framework.ecs.*;
-import com.leppy.redux.framework.ecs.components.Component;
-import com.leppy.redux.framework.ecs.components.ComponentDeserializer;
-import com.leppy.redux.framework.render.Renderer;
+import com.leppy.redux.ecs.*;
+import com.leppy.redux.ecs.components.Component;
+import com.leppy.redux.ecs.components.ComponentDeserializer;
+import com.leppy.redux.render.Renderer;
 
 import java.io.*;
 import java.nio.file.*;

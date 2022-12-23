@@ -1,8 +1,8 @@
 package com.leppy.redux.framework;
 
 import com.leppy.redux.core.Input;
-import com.leppy.redux.framework.ecs.GameObject;
-import com.leppy.redux.framework.render.PickingTexture;
+import com.leppy.redux.ecs.GameObject;
+import com.leppy.redux.render.PickingTexture;
 import com.leppy.redux.scenes.Scene;
 import imgui.ImGui;
 
@@ -21,7 +21,6 @@ public class PropertiesWindow {
             int x = (int) Input.mouse().getScreenX();
             int y = (int) Input.mouse().getScreenY();
             int gameObjectId = pickingTexture.readPixel(x, y);
-            System.out.println(x + ", " + y);
             if (currentScene.getGameObject(gameObjectId) != null) activeGameObject = currentScene.getGameObject(gameObjectId);
         }
     }

@@ -1,10 +1,9 @@
 package com.leppy.redux.framework;
 
-import com.leppy.redux.util.AssetPool;
 import lombok.Getter;
 import lombok.experimental.Delegate;
 import org.joml.Vector2f;
-import com.leppy.redux.framework.render.Texture;
+import com.leppy.redux.render.Texture;
 
 import java.util.ArrayList;
 import java.util.List;

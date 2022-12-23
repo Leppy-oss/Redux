@@ -1,8 +1,8 @@
-package com.leppy.redux.framework.ecs.components;
+package com.leppy.redux.ecs.components;
 
 import com.leppy.redux.framework.Sprite;
-import com.leppy.redux.framework.ecs.*;
-import com.leppy.redux.framework.render.Texture;
+import com.leppy.redux.ecs.*;
+import com.leppy.redux.render.Texture;
 import imgui.ImGui;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -10,7 +10,7 @@ import org.joml.Vector4f;
 /**
  * MANDATORY component for every single game object in order for it to be rendered <br>
  * Transparent objects should use a trans. texture or color with Alpha 0, but they MUST HAVE a sprite renderer <br>
- * This is a vital component for {@link com.leppy.redux.framework.render.Renderer} and {@link com.leppy.redux.framework.render.RenderBatch}
+ * This is a vital component for {@link com.leppy.redux.render.Renderer} and {@link com.leppy.redux.render.RenderBatch}
  */
 public class SpriteRenderer extends Component {
     private Vector4f color = new Vector4f(1, 1, 1, 1);

@@ -1,7 +1,7 @@
-package com.leppy.redux.framework.render;
+package com.leppy.redux.render;
 
 import com.leppy.redux.engine.ReduxEngine;
-import com.leppy.redux.framework.ecs.components.*;
+import com.leppy.redux.ecs.components.*;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 /**
- * Create instances of render batches to support batch rendering; the actual single-instance renderer is {@link com.leppy.redux.framework.render.Renderer}
+ * Create instances of render batches to support batch rendering; the actual single-instance renderer is {@link com.leppy.redux.render.Renderer}
  */
 public class RenderBatch implements Comparable<RenderBatch> {
     // Vertex

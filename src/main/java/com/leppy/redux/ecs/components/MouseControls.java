@@ -1,8 +1,8 @@
-package com.leppy.redux.framework.ecs.components;
+package com.leppy.redux.ecs.components;
 
 import com.leppy.redux.core.Input;
 import com.leppy.redux.engine.ReduxEngine;
-import com.leppy.redux.framework.ecs.GameObject;
+import com.leppy.redux.ecs.GameObject;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 import static com.leppy.redux.util.Constants.*;

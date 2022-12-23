@@ -1,8 +1,7 @@
-package com.leppy.redux.framework.ecs;
+package com.leppy.redux.ecs;
 
 import com.leppy.redux.framework.Sprite;
-import com.leppy.redux.framework.ecs.*;
-import com.leppy.redux.framework.ecs.components.*;
+import com.leppy.redux.ecs.components.*;
 import org.joml.Vector2f;
 
 /**

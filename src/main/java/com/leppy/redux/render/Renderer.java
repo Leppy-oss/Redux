@@ -1,7 +1,7 @@
-package com.leppy.redux.framework.render;
+package com.leppy.redux.render;
 
-import com.leppy.redux.framework.ecs.*;
-import com.leppy.redux.framework.ecs.components.*;
+import com.leppy.redux.ecs.*;
+import com.leppy.redux.ecs.components.*;
 
 import java.util.*;
 

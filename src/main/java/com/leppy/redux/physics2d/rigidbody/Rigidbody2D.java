@@ -1,7 +1,7 @@
 package com.leppy.redux.physics2d.rigidbody;
 
-import com.leppy.redux.framework.ecs.components.*;
-import com.leppy.redux.framework.ecs.*;
+import com.leppy.redux.ecs.components.*;
+import com.leppy.redux.ecs.*;
 import org.joml.Vector2f;
 
 public class Rigidbody2D extends Component {

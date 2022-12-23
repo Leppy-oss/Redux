@@ -2,7 +2,7 @@ package com.leppy.redux.engine;
 
 import com.leppy.redux.core.Input;
 import com.leppy.redux.core.Window;
-import com.leppy.redux.framework.render.*;
+import com.leppy.redux.render.*;
 import com.leppy.redux.scenes.GameScene;
 import com.leppy.redux.scenes.Scene;
 import com.leppy.redux.util.AssetPool;

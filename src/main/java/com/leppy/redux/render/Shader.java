@@ -1,9 +1,8 @@
-package com.leppy.redux.framework.render;
+package com.leppy.redux.render;
 
 import org.joml.*;
 import org.lwjgl.BufferUtils;
 
-import javax.print.DocFlavor;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.file.Files;

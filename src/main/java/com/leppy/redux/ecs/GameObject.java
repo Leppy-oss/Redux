@@ -1,6 +1,6 @@
-package com.leppy.redux.framework.ecs;
+package com.leppy.redux.ecs;
 
-import com.leppy.redux.framework.ecs.components.Component;
+import com.leppy.redux.ecs.components.Component;
 import lombok.Getter;
 import lombok.Setter;
 

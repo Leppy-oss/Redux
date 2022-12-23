@@ -1,6 +1,6 @@
-package com.leppy.redux.framework.ecs.components;
+package com.leppy.redux.ecs.components;
 
-import com.leppy.redux.framework.ecs.GameObject;
+import com.leppy.redux.ecs.GameObject;
 import imgui.ImGui;
 import org.joml.Vector3f;
 import org.joml.Vector4f;

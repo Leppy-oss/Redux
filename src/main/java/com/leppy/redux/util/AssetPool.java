@@ -1,7 +1,7 @@
 package com.leppy.redux.util;
 
 import com.leppy.redux.framework.Spritesheet;
-import com.leppy.redux.framework.render.*;
+import com.leppy.redux.render.*;
 
 import java.io.File;
 import java.util.*;

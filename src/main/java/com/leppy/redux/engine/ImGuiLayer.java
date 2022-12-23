@@ -1,7 +1,7 @@
 package com.leppy.redux.engine;
 
 import com.leppy.redux.framework.*;
-import com.leppy.redux.framework.render.PickingTexture;
+import com.leppy.redux.render.PickingTexture;
 import com.leppy.redux.scenes.Scene;
 import com.leppy.redux.core.Window;
 import imgui.*;
@@ -9,11 +9,9 @@ import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.type.ImBoolean;
-import org.joml.Vector3f;
 
 import static com.leppy.redux.util.Constants.glslVersion;
 import static imgui.flag.ImGuiConfigFlags.DockingEnable;
-import static imgui.flag.ImGuiCol.*;
 
 public class ImGuiLayer {
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();

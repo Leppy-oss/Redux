@@ -1,6 +1,6 @@
 package com.leppy.redux.framework;
 
-import com.leppy.redux.framework.render.Texture;
+import com.leppy.redux.render.Texture;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

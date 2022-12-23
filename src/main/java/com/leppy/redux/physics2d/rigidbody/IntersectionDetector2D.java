@@ -1,6 +1,6 @@
 package com.leppy.redux.physics2d.rigidbody;
 
-import com.leppy.redux.framework.render.Line2D;
+import com.leppy.redux.render.Line2D;
 import com.leppy.redux.util.JMath;
 import org.joml.Vector2f;
 import com.leppy.redux.physics2d.primitives.*;

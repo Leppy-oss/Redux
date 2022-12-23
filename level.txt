@@ -3,24 +3,24 @@
     "name": "Game Intrinsics",
     "components": [
       {
-        "type": "com.leppy.redux.framework.ecs.components.MouseControls",
+        "type": "com.leppy.redux.ecs.components.MouseControls",
         "properties": {
           "isHolding": false,
           "wasJustDragging": false,
           "shouldCreateNewObject": false,
-          "oldPosX": 0.0,
-          "oldPosY": 0.0,
+          "oldPosX": 576.0,
+          "oldPosY": 512.0,
           "uid": 0
         }
       },
       {
-        "type": "com.leppy.redux.framework.ecs.components.GridLines",
+        "type": "com.leppy.redux.ecs.components.GridLines",
         "properties": {
           "uid": 1
         }
       },
       {
-        "type": "com.leppy.redux.framework.ecs.components.EditorCamera",
+        "type": "com.leppy.redux.ecs.components.EditorCamera",
         "properties": {
           "camera": {
             "projectionMatrix": {
@@ -131,5 +131,1573 @@
     },
     "zIndex": 0,
     "uid": 0
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 3
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 64.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 1
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 4
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 128.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 2
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 5
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 192.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 3
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 6
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 256.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 4
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 7
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 5
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 8
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 384.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 6
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 9
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 7
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 10
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 448.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 8
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 11
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 384.0,
+        "y": 448.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 9
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 12
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 448.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 10
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 13
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 11
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 14
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 256.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 12
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 15
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 192.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 13
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 16
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 128.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 14
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 17
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 64.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 15
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 18
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 0.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 16
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 19
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 0.0,
+        "y": 576.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 17
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 20
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 64.0,
+        "y": 576.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 18
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 21
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 128.0,
+        "y": 576.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 19
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 22
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 192.0,
+        "y": 576.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 20
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 23
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 256.0,
+        "y": 576.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 21
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 24
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 256.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 22
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 25
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 320.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 23
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 26
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 384.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 24
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 27
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 448.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 25
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 28
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 512.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 26
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 29
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 576.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 27
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "com.leppy.redux.ecs.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "texture": {
+              "filepath": "assets/images/td/Tilesheet/towerDefense_tilesheet.png",
+              "width": 1472,
+              "height": 832
+            },
+            "texCoords": [
+              {
+                "x": 0.39130434,
+                "y": 1.0
+              },
+              {
+                "x": 0.39130434,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 0.9230769
+              },
+              {
+                "x": 0.3478261,
+                "y": 1.0
+              }
+            ],
+            "width": 64.0,
+            "height": 64.0
+          },
+          "uid": 30
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 576.0,
+        "y": 512.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 64.0
+      }
+    },
+    "zIndex": 0,
+    "uid": 28
   }
 ]
