@@ -1,7 +1,7 @@
 package com.leppy.redux.render;
 
+import com.leppy.redux.ecs.components.SpriteRenderer;
 import com.leppy.redux.engine.ReduxEngine;
-import com.leppy.redux.ecs.components.*;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -16,38 +16,35 @@ import static org.lwjgl.opengl.GL20C.glVertexAttribPointer;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
-/**
- * Create instances of render batches to support batch rendering; the actual single-instance renderer is {@link com.leppy.redux.render.Renderer}
- */
 public class RenderBatch implements Comparable<RenderBatch> {
     // Vertex
     // ======
     // Pos               Color                         tex coords     tex id
     // float, float,     float, float, float, float    float, float   float
-    private static final int POS_SIZE = 2;
-    private static final int COLOR_SIZE = 4;
-    private static final int TEX_COORDS_SIZE = 2;
-    private static final int TEX_ID_SIZE = 1;
-    private static final int ENTITY_ID_SIZE = 1;
+    private final int POS_SIZE = 2;
+    private final int COLOR_SIZE = 4;
+    private final int TEX_COORDS_SIZE = 2;
+    private final int TEX_ID_SIZE = 1;
+    private final int ENTITY_ID_SIZE = 1;
 
-    private static final int POS_OFFSET = 0;
-    private static final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
-    private static final int TEX_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
-    private static final int TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * Float.BYTES;
-    private static final int ENTITY_ID_OFFSET = TEX_ID_OFFSET + TEX_ID_SIZE * Float.BYTES;
-    private static final int VERTEX_SIZE = 10;
-    private static final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
+    private final int POS_OFFSET = 0;
+    private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
+    private final int TEX_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
+    private final int TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * Float.BYTES;
+    private final int ENTITY_ID_OFFSET = TEX_ID_OFFSET + TEX_ID_SIZE * Float.BYTES;
+    private final int VERTEX_SIZE = 10;
+    private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
 
-    private final SpriteRenderer[] sprites;
+    private SpriteRenderer[] sprites;
     private int numSprites;
     private boolean hasRoom;
-    private final float[] vertices;
-    private final int[] texSlots = {0, 1, 2, 3, 4, 5, 6, 7};
+    private float[] vertices;
+    private int[] texSlots = {0, 1, 2, 3, 4, 5, 6, 7};
 
-    private final List<Texture> textures;
+    private List<Texture> textures;
     private int vaoID, vboID;
-    private final int maxBatchSize;
-    private final int zIndex;
+    private int maxBatchSize;
+    private int zIndex;
 
     public RenderBatch(int maxBatchSize, int zIndex) {
         this.zIndex = zIndex;
@@ -70,7 +67,7 @@ public class RenderBatch implements Comparable<RenderBatch> {
         // Allocate space for vertices
         vboID = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glBufferData(GL_ARRAY_BUFFER, (long) vertices.length * Float.BYTES, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, vertices.length * Float.BYTES, GL_DYNAMIC_DRAW);
 
         // Create and upload indices buffer
         int eboID = glGenBuffers();
@@ -150,7 +147,9 @@ public class RenderBatch implements Comparable<RenderBatch> {
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);
 
-        for (Texture texture : textures) texture.unbind();
+        for (int i=0; i < textures.size(); i++) {
+            textures.get(i).unbind();
+        }
         shader.detach();
     }
 
@@ -177,8 +176,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
         Matrix4f transformMatrix = new Matrix4f().identity();
         if (isRotated) {
             transformMatrix.translate(sprite.gameObject.transform.position.x,
-                    sprite.gameObject.transform.position.y, 0f);
-            transformMatrix.rotate((float) Math.toRadians(sprite.gameObject.transform.rotation),
+                                        sprite.gameObject.transform.position.y, 0f);
+            transformMatrix.rotate((float)Math.toRadians(sprite.gameObject.transform.rotation),
                     0, 0, 1);
             transformMatrix.scale(sprite.gameObject.transform.scale.x,
                     sprite.gameObject.transform.scale.y, 1);
@@ -245,10 +244,10 @@ public class RenderBatch implements Comparable<RenderBatch> {
         // Triangle 1
         elements[offsetArrayIndex] = offset + 3;
         elements[offsetArrayIndex + 1] = offset + 2;
-        elements[offsetArrayIndex + 2] = offset;
+        elements[offsetArrayIndex + 2] = offset + 0;
 
         // Triangle 2
-        elements[offsetArrayIndex + 3] = offset;
+        elements[offsetArrayIndex + 3] = offset + 0;
         elements[offsetArrayIndex + 4] = offset + 2;
         elements[offsetArrayIndex + 5] = offset + 1;
     }

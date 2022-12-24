@@ -7,6 +7,8 @@ import com.leppy.redux.util.Constants;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
+import java.util.Objects;
+
 public class TranslateGizmo extends Component {
     private final Vector4f xAxisColor = new Vector4f(1, 0, 0, 1);
     private final Vector4f xAxisColorHover = new Vector4f();
@@ -17,14 +19,14 @@ public class TranslateGizmo extends Component {
     private final SpriteRenderer xAxisSprite, yAxisSprite;
     private GameObject activeGameObject = null;
 
-    private Vector2f xAxisOffset = new Vector2f(64, -5);
-    private Vector2f yAxisOffset = new Vector2f(16, 61);
+    private Vector2f xAxisOffset = new Vector2f(128, -18);
+    private Vector2f yAxisOffset = new Vector2f(44, 128);
 
     private final PropertiesWindow propertiesWindow;
 
     public TranslateGizmo(Sprite arrowSprite, PropertiesWindow propertiesWindow) {
-        this.xAxisObject = Prefabs.generateSpriteObject(arrowSprite, Constants.TILE_WIDTH, Constants.TILE_HEIGHT * 3);
-        this.yAxisObject = Prefabs.generateSpriteObject(arrowSprite, Constants.TILE_WIDTH, Constants.TILE_HEIGHT * 3);
+        this.xAxisObject = Prefabs.generateSpriteObject(arrowSprite, Constants.TILE_WIDTH, Constants.TILE_HEIGHT * 2, "xAxisObj");
+        this.yAxisObject = Prefabs.generateSpriteObject(arrowSprite, Constants.TILE_WIDTH, Constants.TILE_HEIGHT * 2, "yAxisObj");
         this.xAxisSprite = this.xAxisObject.getComponent(SpriteRenderer.class);
         this.yAxisSprite = this.yAxisObject.getComponent(SpriteRenderer.class);
         this.propertiesWindow = propertiesWindow;
@@ -43,6 +45,9 @@ public class TranslateGizmo extends Component {
 
     @Override
     public void update(float dt) {
+        this.xAxisObject.setZIndex(-1);
+        this.yAxisObject.setZIndex(-1);
+
         if (this.activeGameObject != null) {
             this.xAxisObject.transform.position.set(this.activeGameObject.transform.position);
             this.yAxisObject.transform.position.set(this.activeGameObject.transform.position);
@@ -51,8 +56,10 @@ public class TranslateGizmo extends Component {
         }
 
         this.activeGameObject = this.propertiesWindow.getActiveGameObject();
-        if (this.activeGameObject != null) this.setActive();
-        else this.setInactive();
+        if (this.activeGameObject == null) this.setInactive();
+        else if (Objects.equals(this.propertiesWindow.getActiveGameObject().getName(), "Sprite_Object_Gen")) {
+            this.setActive();
+        }
     }
 
     private void setActive() {

@@ -1,13 +1,16 @@
 package com.leppy.redux.render;
 
-import com.leppy.redux.ecs.*;
-import com.leppy.redux.ecs.components.*;
+import com.leppy.redux.ecs.GameObject;
+import com.leppy.redux.ecs.components.SpriteRenderer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class Renderer {
-    private static final int MAX_BATCH_SIZE = 1000;
-    private final List<RenderBatch> batches;
+    private final int MAX_BATCH_SIZE = 1000;
+    private List<RenderBatch> batches;
     private static Shader currentShader;
 
     public Renderer() {
