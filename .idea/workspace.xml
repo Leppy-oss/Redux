@@ -4,15 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="added gizmos">
+    <list default="true" id="a330be96-2805-4c9d-9df2-6fb8e64f8189" name="Changes" comment="translate gizmo inprog. (z-indexing and texture picking is kinda broken rn)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/Gizmo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/GizmoSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/NonPickable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/ScaleGizmo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/gizmos.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/gizmos.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/core/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/GameObjectDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/GameObjectDeserializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/Prefabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/Prefabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/TranslateGizmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/TranslateGizmo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/ComponentDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/ComponentDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/EditorCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/EditorCamera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/FontRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/FontRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/GridLines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/GridLines.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/MouseControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/SpriteRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/ecs/components/TranslateGizmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/components/TranslateGizmo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/PropertiesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/framework/PropertiesWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Collider2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/primitives/Collider2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/physics2d/rigidbody/Rigidbody2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/render/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/render/RenderBatch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/GameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/leppy/redux/scenes/Scene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671823332123</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="translate gizmo inprog. (z-indexing and texture picking is kinda broken rn)">
+      <created>1671848409577</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1671848409577</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,6 +327,7 @@
     <MESSAGE value="refactor and improve code; eliminate redundancies and specify finalities" />
     <MESSAGE value="refactor packages to reduce package nesting; fix issue with mutating vbo assert call in PickingTexture.java breaking properties window; modified gradle kotlin compiling to use Java 17 (will probably switch to Java 11 at some point soon when it starts to work for me :D)" />
     <MESSAGE value="added gizmos" />
-    <option name="LAST_COMMIT_MESSAGE" value="added gizmos" />
+    <MESSAGE value="translate gizmo inprog. (z-indexing and texture picking is kinda broken rn)" />
+    <option name="LAST_COMMIT_MESSAGE" value="translate gizmo inprog. (z-indexing and texture picking is kinda broken rn)" />
   </component>
 </project>

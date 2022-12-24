@@ -2,7 +2,6 @@ package com.leppy.redux.core;
 
 import com.leppy.redux.engine.ReduxEngine;
 import lombok.Getter;
-import lombok.experimental.Delegate;
 import org.joml.*;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -15,7 +14,10 @@ public class Mouse {
             sX, sY, // Scroll wheel x, y
             cX, cY, // Cursor x, y
             lX, lY, // Last x, y
-            dX, dY; // Difference between prev. and curr. cursor positions
+            dX, dY,
+            wX, wY,
+            lwX, lwY,
+            wdX, wdY; // Difference between prev. and curr. cursor positions
 
     private final Button[] mouseButtons = new Button[SIZE]; // left click, middle click, right click
 
@@ -39,6 +41,15 @@ public class Mouse {
         this.cY = 0.0;
         this.lX = 0.0;
         this.lY = 0.0;
+        this.dX = 0.0;
+        this.dY = 0.0;
+        this.wX = 0.0;
+        this.wY = 0.0;
+        this.lwX = 0.0;
+        this.lwY = 0.0;
+        this.wdX = 0.0;
+        this.wdY = 0.0;
+
         this.isDragging = false;
         for (int i = 0; i < SIZE; i++) mouseButtons[i] = new Button(i);
     }
@@ -53,8 +64,12 @@ public class Mouse {
         this.sY = 0.0;
         this.dX = this.lX - this.cX;
         this.dY = this.lY - this.cY;
+        this.wdX = this.lwX - this.wX;
+        this.wdY = this.lwY - this.wY;
         this.lX = this.cX;
         this.lY = this.cY;
+        this.lwX = this.wX;
+        this.lwY = this.wY;
     }
 
     public boolean isDragging() {
@@ -106,6 +121,10 @@ public class Mouse {
     }
 
     public float getOrthoX() {
+        return (float) this.wX;
+    }
+
+    protected void calcOrthoX() {
         float currentX = (float) (this.getCX() - this.gameViewportPos.x);
         currentX = (currentX / this.gameViewportSize.x) * 2.0f - 1.0f;
         Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
@@ -114,12 +133,15 @@ public class Mouse {
         Matrix4f viewProjection = new Matrix4f();
         camera.getInverseView().mul(camera.getInverseProjection(), viewProjection);
         tmp.mul(viewProjection);
-        currentX = tmp.x;
 
-        return currentX;
+        this.wX = tmp.x;
     }
 
     public float getOrthoY() {
+        return (float) this.wY;
+    }
+
+    protected void calcOrthoY() {
         float currentY = (float) (this.getCY() - this.gameViewportPos.y);
         currentY = -((currentY / this.gameViewportSize.y) * 2.0f - 1.0f);
         Vector4f tmp = new Vector4f(0, currentY, 0, 1);
@@ -128,9 +150,8 @@ public class Mouse {
         Matrix4f viewProjection = new Matrix4f();
         camera.getInverseView().mul(camera.getInverseProjection(), viewProjection);
         tmp.mul(viewProjection);
-        currentY = tmp.y;
 
-        return currentY;
+        this.wY = tmp.y;
     }
 
     public void setGameViewportPos(Vector2f gameViewportPos) {

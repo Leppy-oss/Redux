@@ -1,4 +1,4 @@
-package com.leppy.redux.ecs.components;
+package com.leppy.redux.components;
 
 import com.leppy.redux.core.Input;
 import com.leppy.redux.engine.ReduxEngine;

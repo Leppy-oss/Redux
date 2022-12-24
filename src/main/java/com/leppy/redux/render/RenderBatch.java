@@ -1,6 +1,6 @@
 package com.leppy.redux.render;
 
-import com.leppy.redux.ecs.components.SpriteRenderer;
+import com.leppy.redux.components.SpriteRenderer;
 import com.leppy.redux.engine.ReduxEngine;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;

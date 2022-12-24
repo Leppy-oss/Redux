@@ -1,6 +1,6 @@
 package com.leppy.redux.physics2d.rigidbody;
 
-import com.leppy.redux.ecs.components.*;
+import com.leppy.redux.components.*;
 import com.leppy.redux.ecs.*;
 import org.joml.Vector2f;
 

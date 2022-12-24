@@ -52,6 +52,10 @@ public class Input {
         get().mouse.lY = get().mouse.cY;
         get().mouse.cX = cX;
         get().mouse.cY = cY;
+        get().mouse.lwX = get().mouse.wX;
+        get().mouse.lwY = get().mouse.wY;
+        get().mouse.calcOrthoX();
+        get().mouse.calcOrthoY();
         get().mouse.isDragging = get().mouse.isAnyPressed();
     }
 

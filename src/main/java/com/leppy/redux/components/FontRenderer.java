@@ -1,4 +1,4 @@
-package com.leppy.redux.ecs.components;
+package com.leppy.redux.components;
 
 public class FontRenderer extends Component {
 

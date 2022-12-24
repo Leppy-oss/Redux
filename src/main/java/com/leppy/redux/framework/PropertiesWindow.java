@@ -1,5 +1,6 @@
 package com.leppy.redux.framework;
 
+import com.leppy.redux.components.NonPickable;
 import com.leppy.redux.core.Input;
 import com.leppy.redux.ecs.GameObject;
 import com.leppy.redux.render.PickingTexture;
@@ -23,7 +24,14 @@ public class PropertiesWindow {
             int x = (int) Input.mouse().getScreenX();
             int y = (int) Input.mouse().getScreenY();
             int gameObjectId = pickingTexture.readPixel(x, y);
-            if (currentScene.getGameObject(gameObjectId) != null) activeGameObject = currentScene.getGameObject(gameObjectId);
+            if (currentScene.getGameObject(gameObjectId) != null) {
+                GameObject pickedObj = currentScene.getGameObject(gameObjectId);
+                if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
+                    activeGameObject = pickedObj;
+                } else if (pickedObj == null && !Input.isDragging()) {
+                    activeGameObject = null;
+                }
+            }
         }
     }
 

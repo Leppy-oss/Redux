@@ -1,4 +1,4 @@
-package com.leppy.redux.ecs.components;
+package com.leppy.redux.components;
 
 import com.leppy.redux.core.Camera;
 import com.leppy.redux.core.Input;

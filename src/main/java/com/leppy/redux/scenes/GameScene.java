@@ -5,7 +5,7 @@ import com.leppy.redux.core.*;
 import com.leppy.redux.engine.ReduxEngine;
 import com.leppy.redux.framework.*;
 import com.leppy.redux.ecs.*;
-import com.leppy.redux.ecs.components.*;
+import com.leppy.redux.components.*;
 import com.leppy.redux.render.DebugDraw;
 import com.leppy.redux.util.*;
 import imgui.*;
@@ -37,8 +37,7 @@ public class GameScene extends Scene {
         this.gameIntrinsics.addComponent(new MouseControls());
         this.gameIntrinsics.addComponent(new GridLines());
         this.gameIntrinsics.addComponent(new EditorCamera(camera));
-        gameIntrinsics.addComponent(new TranslateGizmo(gizmos.getSprite(1),
-                ReduxEngine.getImguilayer().getPropertiesWindow()));
+        gameIntrinsics.addComponent(new GizmoSystem(gizmos));
 
         gameIntrinsics.start();
         this.addGameObjectToScene(gameIntrinsics);
@@ -87,11 +86,11 @@ public class GameScene extends Scene {
 
         AssetPool.addSpritesheet("64x-tiles",
                 new Spritesheet(AssetPool.getTexture("assets/images/td/Tilesheet/towerDefense_tilesheet.png"),
-                        64, 64, 89, 0));
+                        64, 64, 299, 0));
 
         AssetPool.addSpritesheet("gizmos",
                 new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),
-                        24, 48, 2, 0));
+                        24, 48, 3, 0));
 
         // Ensure that each GameObject has its sprite loaded
         for (GameObject g : gameObjects) {

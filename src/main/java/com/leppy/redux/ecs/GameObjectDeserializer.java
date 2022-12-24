@@ -1,7 +1,7 @@
 package com.leppy.redux.ecs;
 
 import com.google.gson.*;
-import com.leppy.redux.ecs.components.Component;
+import com.leppy.redux.components.Component;
 
 import java.lang.reflect.Type;
 

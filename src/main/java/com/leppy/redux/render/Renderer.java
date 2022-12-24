@@ -1,10 +1,9 @@
 package com.leppy.redux.render;
 
 import com.leppy.redux.ecs.GameObject;
-import com.leppy.redux.ecs.components.SpriteRenderer;
+import com.leppy.redux.components.SpriteRenderer;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
